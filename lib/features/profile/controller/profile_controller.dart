@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:the9thhour/core/common/constants/imagepath.dart';
 import 'package:the9thhour/features/profile/models/profile_model.dart';
 
 class ProfileController extends GetxController {
@@ -12,7 +13,7 @@ class ProfileController extends GetxController {
       id: '1',
       name: 'Katona Beatrix',
       title: 'Beauty Care Specialist',
-      profileImage: '', // Will be added later
+      profileImage: ImagePath.profileImage, // Will be added later
       skinTone: 'Deep/Melanin-Rich',
       skinType: 'Oily',
       hairType: 'Straight',

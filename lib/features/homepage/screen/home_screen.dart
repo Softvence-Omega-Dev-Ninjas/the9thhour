@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [const Color(0xFFF7D5E8), const Color(0xFFF5E6F0)],
+            colors: [const Color(0xFFFFCFE9), const Color(0xFFF5E6F0)],
           ),
         ),
         child: SafeArea(

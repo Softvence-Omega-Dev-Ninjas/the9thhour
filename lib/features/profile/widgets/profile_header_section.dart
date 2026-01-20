@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the9thhour/core/common/style/global_text_style.dart';
 
 class ProfileHeaderSection extends StatelessWidget {
   final String profileImage;
@@ -26,30 +27,29 @@ class ProfileHeaderSection extends StatelessWidget {
             //   //onTap: onBackPressed,
             //   child: Icon(Icons.arrow_back, size: 24.sp),
             // ),
-            SizedBox(width: 16.w),
+            //SizedBox(width: 16.w),
             Expanded(
               child: Center(
                 child: Text(
                   'Profile',
-                  style: TextStyle(
-                    fontSize: 24.sp,
+                  style: GlobalTextStyle.heading2.copyWith(
+                    fontSize: 26.sp,
                     fontWeight: FontWeight.w600,
-                    color: Colors.black,
                   ),
                 ),
               ),
             ),
-            SizedBox(width: 40.w), // For alignment
+            //SizedBox(width: 40.w), // For alignment
           ],
         ),
-        SizedBox(height: 24.h),
+        SizedBox(height: 20.h),
         // Profile Section
         Row(
           children: [
             // Profile Image
             Container(
-              width: 80.w,
-              height: 80.w,
+              width: 72.w,
+              height: 72.w,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.grey[300],
@@ -60,26 +60,25 @@ class ProfileHeaderSection extends StatelessWidget {
                       child: Image.asset(profileImage, fit: BoxFit.cover),
                     ),
             ),
-            SizedBox(width: 16.w),
+            SizedBox(width: 20.w),
             // Name and Title
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   name,
-                  style: TextStyle(
-                    fontSize: 18.sp,
+                  style: GlobalTextStyle.heading2.copyWith(
+                    fontSize: 26.sp,
                     fontWeight: FontWeight.w600,
-                    color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 4.h),
+                SizedBox(height: 8.h),
                 Text(
                   title,
-                  style: TextStyle(
-                    fontSize: 12.sp,
+                  style: GlobalTextStyle.bodyText.copyWith(
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
-                    color: Colors.grey,
                   ),
                 ),
               ],
