@@ -148,7 +148,7 @@ class HomeScreen extends StatelessWidget {
                         reviews: product.reviews,
                         imageUrl: product.imageUrl,
                         onViewDeal: () => controller.onViewDeal(index),
-                        onFavorite: () => controller.onFavorite(index),
+                        onFavorite: () => controller.toggleFavorite(index),
                       );
                     },
                   ),
