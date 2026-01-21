@@ -53,32 +53,33 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'Explore Today\'s\n',
-                              style: GlobalTextStyle.heading2.copyWith(
-                                fontSize: 24.sp,
-                                fontStyle: FontStyle.normal,
-                              ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Explore Today\'s',
+                            style: GlobalTextStyle.heading2.copyWith(
+                              fontSize: 24.sp,
+                              fontStyle: FontStyle.normal,
                             ),
-                            TextSpan(
-                              text: 'Best Deal ',
-                              style: GlobalTextStyle.heading1.copyWith(
-                                fontSize: 24.sp,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'Best Deal ',
+                                style: GlobalTextStyle.heading1.copyWith(
+                                  fontSize: 24.sp,
+                                ),
                               ),
-                            ),
-                            WidgetSpan(
-                              alignment: PlaceholderAlignment.middle,
-                              child: Image.asset(
+                              Image.asset(
                                 IconPath.fireIcon,
                                 width: 20.w,
                                 height: 22.h,
                               ),
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
+                        ],
                       ),
                       GestureDetector(
                         onTap: controller.onSeeMore,
