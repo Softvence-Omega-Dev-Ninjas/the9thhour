@@ -168,8 +168,8 @@ class _ProductCardState extends State<ProductCard> {
                   overflow: TextOverflow.ellipsis,
                   style: GlobalTextStyle.bodyText.copyWith(
                     fontSize: 11.sp,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.grey,
+                    fontWeight: FontWeight.w600,
+                
                   ),
                 ),
 
