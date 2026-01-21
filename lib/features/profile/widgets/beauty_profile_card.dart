@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:the9thhour/core/common/style/global_text_style.dart';
 
 class BeautyProfileCard extends StatelessWidget {
