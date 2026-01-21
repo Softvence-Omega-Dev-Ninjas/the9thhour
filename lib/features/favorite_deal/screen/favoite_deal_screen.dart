@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:the9thhour/core/common/constants/iconpath.dart';
 import 'package:the9thhour/features/favorite_deal/controller/favorite_deal_controller.dart';
 
-class FavoriteDealScreen extends GetView<FavoriteDealController> {
+class FavoriteDealScreen extends StatelessWidget {
   const FavoriteDealScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(FavoriteDealController());
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -17,7 +20,7 @@ class FavoriteDealScreen extends GetView<FavoriteDealController> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-          appBar: AppBar(
+        appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -37,55 +40,272 @@ class FavoriteDealScreen extends GetView<FavoriteDealController> {
             ),
           ),
           title: const Text(
-            'Favorate',
+            'Favorite Deals',
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
         ),
-        body: Obx(() {
-          if (controller.favoriteProducts.isEmpty) {
-            return const Center(child: Text('No favorite deals yet!'));
-          } else {
-            return ListView.builder(
-              itemCount: controller.favoriteProducts.length,
-              itemBuilder: (context, index) {
-                final product = controller.favoriteProducts[index];
-                return Card(
-                  margin: const EdgeInsets.all(8.0),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Image.asset(
-                          product.imageUrl,
-                          width: 80,
-                          height: 80,
-                          fit: BoxFit.cover,
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const Text(
+                        'Favorite Deals',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                product.name,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
+                      ),
+                    ],
+                  ),
+
+                  Row(
+                    children: [
+                      const Text('Sort By: '),
+                      SizedBox(width: 8.w),
+                      PopupMenuButton<String>(
+                        onSelected: controller.changeSortOption,
+                        itemBuilder: (BuildContext context) {
+                          return controller.sortOptions.map((String choice) {
+                            return PopupMenuItem<String>(
+                              value: choice,
+                              child: Text(choice),
+                            );
+                          }).toList();
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10.w,
+                            vertical: 4.h,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20.r),
+                          ),
+                          child: Obx(
+                            () => Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  controller.selectedSortOption.value,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              Text(product.brand),
-                              Text(product.price),
-                            ],
+                                const SizedBox(width: 4),
+                                const Icon(Icons.keyboard_arrow_down),
+                              ],
+                            ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                );
-              },
-            );
-          }
-        }),
+                ],
+              ),
+              SizedBox(height: 16.h),
+              Expanded(
+                child: Obx(() {
+                  if (controller.favoriteProducts.isEmpty) {
+                    return const Center(child: Text('No favorite deals yet!'));
+                  } else {
+                    return ListView.builder(
+                      itemCount: controller.favoriteProducts.length,
+                      itemBuilder: (context, index) {
+                        final product = controller.favoriteProducts[index];
+                        return Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          margin: const EdgeInsets.symmetric(vertical: 8),
+                          child: Stack(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(12),
+                                child: Row(
+                                  children: [
+                                    Image.asset(
+                                      product.imageUrl,
+                                      height: 100,
+                                      width: 150,
+                                    ),
+                                    const SizedBox(width: 5),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              ...List.generate(5, (i) {
+                                                if (i <
+                                                    product.rating.floor()) {
+                                                  return const Icon(
+                                                    Icons.star,
+                                                    color: Colors.amber,
+                                                    size: 16,
+                                                  );
+                                                }
+                                                if (i ==
+                                                        product.rating
+                                                            .floor() &&
+                                                    product.rating.remainder(
+                                                          1,
+                                                        ) >=
+                                                        0.5) {
+                                                  return const Icon(
+                                                    Icons.star_half,
+                                                    color: Colors.amber,
+                                                    size: 16,
+                                                  );
+                                                }
+                                                return const Icon(
+                                                  Icons.star_border,
+                                                  color: Colors.amber,
+                                                  size: 16,
+                                                );
+                                              }),
+                                              const SizedBox(width: 4),
+                                              Text(
+                                                '${product.rating} (${product.reviews} Reviews)',
+                                                style: const TextStyle(
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 4),
+                                          Text(
+                                            product.name,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          const SizedBox(height: 4),
+                                          Text(
+                                            'From: ${product.brand}',
+                                            style: const TextStyle(
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 6),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    product.price,
+                                                    style: const TextStyle(
+                                                      color: Colors.purple,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  const SizedBox(width: 6),
+                                                  Text(
+                                                    product.originalPrice,
+                                                    style: const TextStyle(
+                                                      decoration: TextDecoration
+                                                          .lineThrough,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 8),
+                                          Row(
+                                            children: [
+                                              ElevatedButton(
+                                                onPressed: () {},
+                                                style: ElevatedButton.styleFrom(
+                                                  backgroundColor: const Color(
+                                                    0xFF6B34AE,
+                                                  ),
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          18.0,
+                                                        ),
+                                                  ),
+                                                  minimumSize: const Size(
+                                                    150,
+                                                    30,
+                                                  ),
+                                                ),
+                                                child: const Text(
+                                                  'View Deal',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(width: 8),
+                                              InkWell(
+                                                onTap: () {
+                                                  controller
+                                                      .removeFromFavorites(
+                                                        product,
+                                                      );
+                                                },
+                                                child: Container(
+                                                  padding: const EdgeInsets.all(
+                                                    8,
+                                                  ),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.grey[200],
+                                                    shape: BoxShape.circle,
+                                                  ),
+                                                  child: const Icon(
+                                                    Icons.favorite,
+                                                    color: Color(0XFF6B34AE),
+                                                    size: 20,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Positioned(
+                                top: 5,
+                                left: 5,
+                                child: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xFf6B34AE),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                  ),
+                                  child: Image.asset(
+                                    IconPath.shareIcon,
+                                    width: 20,
+                                    height: 20,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  }
+                }),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

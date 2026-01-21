@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:the9thhour/core/common/constants/iconpath.dart';
+import 'package:the9thhour/features/favorite_deal/controller/favorite_deal_controller.dart';
 import 'package:the9thhour/features/search_deal/controller/search_deal_controller.dart';
 import 'package:the9thhour/features/search_deal/model/deal_model.dart';
 
@@ -111,7 +112,12 @@ class DealCardWidget extends StatelessWidget {
                           ),
                           const SizedBox(width: 8),
                           InkWell(
-                            onTap: () => controller.toggleFavorite(deal),
+                            onTap: () {
+                              controller.toggleFavorite(deal);
+                              Get.put(
+                                FavoriteDealController(),
+                              ).toggleFavoriteFromDeal(deal);
+                            },
                             child: Container(
                               padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
