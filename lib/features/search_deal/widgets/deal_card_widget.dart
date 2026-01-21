@@ -191,7 +191,7 @@ class DealCardWidget extends StatelessWidget {
 
     Get.bottomSheet(
       DraggableScrollableSheet(
-        initialChildSize: 0.45,
+        initialChildSize: 0.4,
         minChildSize: 0.3,
         maxChildSize: 0.9,
         builder: (BuildContext context, ScrollController scrollController) {
@@ -366,8 +366,8 @@ class DealCardWidget extends StatelessWidget {
   void _showLoginBottomSheet(BuildContext context) {
     Get.bottomSheet(
       DraggableScrollableSheet(
-        initialChildSize: 0.4,
-        minChildSize: 0.3,
+        initialChildSize: 0.3,
+        minChildSize: 0.2,
         maxChildSize: 0.9,
         builder: (BuildContext context, ScrollController scrollController) {
           return Container(
