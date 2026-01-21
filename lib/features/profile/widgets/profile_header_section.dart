@@ -21,28 +21,6 @@ class ProfileHeaderSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Back Button and Title
-        Row(
-          children: [
-            // GestureDetector(
-            //   //onTap: onBackPressed,
-            //   child: Icon(Icons.arrow_back, size: 24.sp),
-            // ),
-            //SizedBox(width: 16.w),
-            Expanded(
-              child: Center(
-                child: Text(
-                  'Profile',
-                  style: GlobalTextStyle.heading2.copyWith(
-                    fontSize: 26.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
-            //SizedBox(width: 40.w), // For alignment
-          ],
-        ),
-        SizedBox(height: 20.h),
         // Profile Section
         Row(
           children: [

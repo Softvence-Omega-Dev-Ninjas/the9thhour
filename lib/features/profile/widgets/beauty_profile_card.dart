@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:the9thhour/core/common/style/global_text_style.dart';
 
 class BeautyProfileCard extends StatelessWidget {
@@ -102,21 +103,29 @@ class BeautyProfileCard extends StatelessWidget {
                     value: skinTone,
                     hasIcon: true,
                   ),
-                  SizedBox(height: 12.h),
+                  SizedBox(height: 8.h),
+                  const Divider(color: Color(0xFFE8E8E8), thickness: 1),
+                  SizedBox(height: 8.h),
                   _ProfileDetailRow(
                     label: 'Skin Type:',
                     value: skinType,
                     hasIcon: true,
                   ),
-                  SizedBox(height: 12.h),
+                  SizedBox(height: 8.h),
+                  const Divider(color: Color(0xFFE8E8E8), thickness: 1),
+                  SizedBox(height: 8.h),
                   _ProfileDetailRow(
                     label: 'Hair Type:',
                     value: hairType,
                     hasIcon: true,
                   ),
-                  SizedBox(height: 12.h),
+                  SizedBox(height: 8.h),
+                  const Divider(color: Color(0xFFE8E8E8), thickness: 1),
+                  SizedBox(height: 8.h),
                   _ProfileDetailRow(label: 'Goal:', value: goal, hasIcon: true),
-                  SizedBox(height: 12.h),
+                  SizedBox(height: 8.h),
+                  const Divider(color: Color(0xFFE8E8E8), thickness: 1),
+                  SizedBox(height: 8.h),
                   _ProfileDetailRow(
                     label: 'Budget:',
                     value: budget,

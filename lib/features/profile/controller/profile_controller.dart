@@ -46,13 +46,17 @@ class ProfileController extends GetxController {
     userProfile.value = userProfile.value.copyWith(budget: budget);
   }
 
+  var isEditMode = false.obs;
+
   void editPreference() {
-    // TODO: Navigate to edit preference screen
+    isEditMode.value = true;
   }
 
-  void logout() {
-    // TODO: Implement logout logic
+  void closeEditPreference() {
+    isEditMode.value = false;
   }
+
+  void logout() {}
 
   void navigateBack() {
     Get.back();

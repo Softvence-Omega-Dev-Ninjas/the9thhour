@@ -109,7 +109,7 @@ class SearchDealScreen extends StatelessWidget {
                                     Text(
                                       controller.selectedSortOption.value,
                                       style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.normal,
                                       ),
                                     ),
                                     const SizedBox(width: 4),
