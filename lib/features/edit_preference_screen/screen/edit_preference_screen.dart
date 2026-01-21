@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:the9thhour/core/common/style/global_text_style.dart';
 import 'package:the9thhour/features/profile/controller/profile_controller.dart';
 import '../controller/edit_preference_controller.dart';
