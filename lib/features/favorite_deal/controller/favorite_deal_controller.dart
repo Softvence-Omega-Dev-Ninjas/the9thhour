@@ -34,10 +34,8 @@ class FavoriteDealController extends GetxController {
   void removeFromFavorites(ProductModel product) {
     favoriteProducts.removeWhere((item) => item.id == product.id);
     favoriteProducts.remove(product);
-    if (product.id != null) {
-      favoriteProducts.removeWhere((item) => item.id == product.id);
+    favoriteProducts.removeWhere((item) => item.id == product.id);
     }
-  }
 
   bool isFavorite(ProductModel product) => favoriteProducts.contains(product);
 
