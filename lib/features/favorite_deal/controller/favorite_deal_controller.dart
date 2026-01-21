@@ -1,61 +1,39 @@
 import 'package:get/get.dart';
-import 'package:the9thhour/features/homepage/models/product_model.dart';
 import 'package:the9thhour/features/search_deal/model/deal_model.dart';
 
 class FavoriteDealController extends GetxController {
-  final RxList<ProductModel> favoriteProducts = <ProductModel>[].obs;
+  // DealModel এর লিস্ট ব্যবহার করা হচ্ছে
+  final RxList<DealModel> favoriteProducts = <DealModel>[].obs;
 
-  final RxString selectedSortOption = 'Popularity'.obs;
-  final List<String> sortOptions = [
-    'Popularity',
-    'Price: Low to High',
-    'Price: High to Low',
-    'Newest',
-  ];
+  final RxString selectedSortOption = 'Lowest Price'.obs;
+  final List<String> sortOptions = ['Lowest Price', 'Highest Price', 'Newest'];
 
   void changeSortOption(String value) {
     selectedSortOption.value = value;
+    // এখানে সর্টিং লজিক বসাতে পারেন
   }
 
-  void toggleFavorite(ProductModel product) {
-    if (isFavorite(product)) {
-      removeFromFavorites(product);
-    } else {
-      addToFavorites(product);
-    }
-  }
-
-  void addToFavorites(ProductModel product) {
-    if (!favoriteProducts.contains(product)) {
-      favoriteProducts.add(product);
-    }
-  }
-
-  void removeFromFavorites(ProductModel product) {
-    favoriteProducts.removeWhere((item) => item.id == product.id);
-    favoriteProducts.remove(product);
-    favoriteProducts.removeWhere((item) => item.id == product.id);
-    }
-
-  bool isFavorite(ProductModel product) => favoriteProducts.contains(product);
-
+  // Search Screen থেকে ফেভারিট টগল করার ফাংশন
   void toggleFavoriteFromDeal(DealModel deal) {
-    final index = favoriteProducts.indexWhere((p) => p.name == deal.title);
-    if (index != -1) {
-      favoriteProducts.removeAt(index);
+    // চেক করি এই ডিলটি ইতিমধ্যে ফেভারিট লিস্টে আছে কিনা (টাইটেল দিয়ে চেক করা হচ্ছে)
+    final existingIndex = favoriteProducts.indexWhere(
+      (element) => element.title == deal.title,
+    );
+
+    if (existingIndex != -1) {
+      // যদি থাকে, তাহলে রিমুভ করে দিই
+      favoriteProducts.removeAt(existingIndex);
+      deal.isFavorite = false;
     } else {
-      favoriteProducts.add(
-        ProductModel(
-          id: DateTime.now().toString(),
-          imageUrl: deal.image,
-          name: deal.title,
-          brand: deal.brand,
-          price: '\$${deal.price}',
-          originalPrice: '\$${deal.oldPrice}',
-          rating: deal.rating,
-          reviews: deal.reviews,
-        ),
-      );
+      // না থাকলে অ্যাড করি
+      favoriteProducts.add(deal);
+      deal.isFavorite = true;
     }
+  }
+
+  // ফেভারিট স্ক্রিন থেকে রিমুভ করার ফাংশন
+  void removeFromFavorites(DealModel deal) {
+    favoriteProducts.remove(deal);
+    deal.isFavorite = false;
   }
 }
