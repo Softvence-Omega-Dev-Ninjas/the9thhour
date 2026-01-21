@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:the9thhour/core/common/constants/iconpath.dart';
 import 'package:the9thhour/core/common/constants/imagepath.dart';
+import 'package:the9thhour/features/favorite_deal/controller/favorite_deal_controller.dart';
 import 'package:the9thhour/features/homepage/models/product_model.dart';
 
 class HomePageController extends GetxController {
@@ -71,8 +72,9 @@ class HomePageController extends GetxController {
     // TODO: Implement view deal logic
   }
 
-  void onFavorite(int productIndex) {
-    // TODO: Implement favorite logic
+  void toggleFavorite(int productIndex) {
+    final FavoriteDealController favoriteController = Get.find();
+    favoriteController.toggleFavorite(products[productIndex]);
   }
 
   void onSeeMore() {
