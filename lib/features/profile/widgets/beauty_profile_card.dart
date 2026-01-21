@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the9thhour/core/common/constants/app_colors.dart';
 import 'package:the9thhour/core/common/style/global_text_style.dart';
-import 'package:the9thhour/core/common/widgets/custom_secondary_button.dart';
 
 class BeautyProfileCard extends StatelessWidget {
   final String skinTone;
