@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:the9thhour/core/common/constants/iconpath.dart';
+import 'package:the9thhour/core/common/style/global_text_style.dart';
 import 'package:the9thhour/features/favorite_deal/controller/favorite_deal_controller.dart';
 
 class FavoriteDealScreen extends StatelessWidget {
@@ -39,9 +40,11 @@ class FavoriteDealScreen extends StatelessWidget {
               ),
             ),
           ),
-          title: const Text(
-            'Favorite Deals',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          title: Text(
+            'Favorite ',
+            style: GlobalTextStyle.heading3.copyWith(
+              fontSize: 22.sp,
+            ),
           ),
           centerTitle: true,
         ),
@@ -54,11 +57,10 @@ class FavoriteDealScreen extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const Text(
+                      Text(
                         'Favorite Deals',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                        style: GlobalTextStyle.heading1 .copyWith(
+                          fontSize: 18.sp,
                         ),
                       ),
                     ],
@@ -66,8 +68,10 @@ class FavoriteDealScreen extends StatelessWidget {
 
                   Row(
                     children: [
-                      const Text('Sort By: '),
-                      SizedBox(width: 8.w),
+                      Text('Sort By: ',style: GlobalTextStyle.heading2.copyWith(
+                        fontSize: 12,
+                      ), ),
+                      SizedBox(width: 5.w),
                       PopupMenuButton<String>(
                         onSelected: controller.changeSortOption,
                         itemBuilder: (BuildContext context) {
@@ -80,8 +84,8 @@ class FavoriteDealScreen extends StatelessWidget {
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                            horizontal: 10.w,
-                            vertical: 4.h,
+                            horizontal: 8.w,
+                            vertical: 4,
                           ),
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -93,8 +97,8 @@ class FavoriteDealScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   controller.selectedSortOption.value,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                  style: GlobalTextStyle.heading2.copyWith(
+                                    fontSize: 14,
                                   ),
                                 ),
                                 const SizedBox(width: 4),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:the9thhour/core/common/constants/app_colors.dart';
 import 'package:the9thhour/core/common/style/global_text_style.dart';
 
 class BeautyProfileCard extends StatelessWidget {
@@ -25,9 +24,8 @@ class BeautyProfileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFFF7D5E8),
+        color: Color.fromARGB(255, 255, 203, 225),
         borderRadius: BorderRadius.circular(22.r),
-        border: Border.all(color: Color(0xFFD8BBC7), width: 0.5.w),
       ),
       child: Padding(
         padding: const EdgeInsets.all(14.0),
@@ -36,23 +34,23 @@ class BeautyProfileCard extends StatelessWidget {
           children: [
             // Header with Title and Edit Button
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   'Setup Beauty ',
                   style: GlobalTextStyle.heading2.copyWith(
-                    fontSize: 20.sp,
+                    fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 Text(
                   'Profile',
                   style: GlobalTextStyle.heading1.copyWith(
-                    fontSize: 20.sp,
+                    fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                //SizedBox(width: 8.w),
+                SizedBox(width: 45),
                 GestureDetector(
                   onTap: onEditPressed,
                   child: Container(
@@ -60,17 +58,14 @@ class BeautyProfileCard extends StatelessWidget {
                       color: const Color(0xFFB83B9F),
                       borderRadius: BorderRadius.circular(20.r),
                     ),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 13.w,
-                      vertical: 8.h,
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     child: Row(
                       children: [
                         Text(
                           'Edit Preference',
                           style: GlobalTextStyle.bodyText.copyWith(
                             fontSize: 12.sp,
-                            color: AppColors.secondaryTextColor,
+                            color: Colors.white,
                           ),
                         ),
                         SizedBox(width: 4.w),
@@ -156,29 +151,34 @@ class _ProfileDetailRow extends StatelessWidget {
         if (hasIcon)
           SizedBox(
             width: 20.w,
-            child: Icon(Icons.circle, size: 8.sp, color: Colors.black),
+            child: Image.asset(
+              'assets/icons/bullet_icon.png', // Replace with your asset path
+              width: 10.w,
+              height: 10.h,
+            ),
           )
         else
           SizedBox(width: 20.w),
         SizedBox(width: 8.w),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w600,
-            color: Colors.black,
+        SizedBox(
+          width: 100.w,
+          child: Text(
+            label,
+            style: GlobalTextStyle.heading2.copyWith(
+              fontSize: 14,
+              fontWeight: FontWeight.normal,
+            ),
           ),
         ),
-        SizedBox(width: 12.w),
         Expanded(
           child: Text(
             value,
-            style: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-              color: Colors.black87,
+            style: GlobalTextStyle.heading2.copyWith(
+              fontSize: 12,
+              fontWeight: FontWeight.normal,
             ),
-            textAlign: TextAlign.end,
+
+            textAlign: TextAlign.left,
           ),
         ),
       ],

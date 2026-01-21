@@ -227,7 +227,7 @@ class _ProductCardState extends State<ProductCard> {
                               _isFavorited
                                   ? Icons.favorite
                                   : Icons.favorite_border,
-                              color: Colors.purple,
+                              color: Color(0xFF6B34AE),
                               size: 16.sp,
                             ),
                           ),
