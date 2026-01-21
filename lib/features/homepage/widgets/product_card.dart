@@ -4,7 +4,7 @@ import 'package:the9thhour/core/common/constants/iconpath.dart';
 import 'package:the9thhour/core/common/style/global_text_style.dart';
 import 'package:the9thhour/core/common/widgets/custom_secondary_button.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   final String name;
   final String brand;
   final String price;
@@ -27,6 +27,13 @@ class ProductCard extends StatelessWidget {
     required this.onViewDeal,
     required this.onFavorite,
   });
+
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  bool _isFavorited = false;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +72,7 @@ class ProductCard extends StatelessWidget {
                       topRight: Radius.circular(12.r),
                     ),
                     child: Image.asset(
-                      imageUrl,
+                      widget.imageUrl,
                       //fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
                         return Center(
@@ -112,7 +119,7 @@ class ProductCard extends StatelessWidget {
                     Icon(Icons.star, color: Colors.orange, size: 12.sp),
                     SizedBox(width: 4.w),
                     Text(
-                      '$rating',
+                      '${widget.rating}',
                       style: TextStyle(
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
@@ -121,7 +128,7 @@ class ProductCard extends StatelessWidget {
                     ),
                     SizedBox(width: 4.w),
                     Text(
-                      '($reviews reviews)',
+                      '(${widget.reviews} reviews)',
                       style: TextStyle(
                         fontSize: 10.sp,
                         color: Colors.grey,
@@ -135,7 +142,7 @@ class ProductCard extends StatelessWidget {
 
                 // Product Name
                 Text(
-                  name,
+                  widget.name,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: GlobalTextStyle.bodyText.copyWith(
@@ -148,7 +155,7 @@ class ProductCard extends StatelessWidget {
 
                 // Brand
                 Text(
-                  brand,
+                  widget.brand,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: GlobalTextStyle.bodyText.copyWith(
@@ -164,7 +171,7 @@ class ProductCard extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      price,
+                      widget.price,
                       style: TextStyle(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w800,
@@ -173,7 +180,7 @@ class ProductCard extends StatelessWidget {
                     ),
                     SizedBox(width: 6.w),
                     Text(
-                      originalPrice,
+                      widget.originalPrice,
                       style: TextStyle(
                         fontSize: 11.sp,
                         fontWeight: FontWeight.w400,
@@ -194,23 +201,32 @@ class ProductCard extends StatelessWidget {
                         height: 36.h,
                         child: CustomSecondaryButton(
                           text: 'View Deal',
-                          onPressed: onViewDeal,
+                          onPressed: widget.onViewDeal,
                         ),
                       ),
                     ),
                     SizedBox(width: 10.w),
                     GestureDetector(
-                      onTap: onFavorite,
+                      onTap: () {
+                        setState(() {
+                          _isFavorited = !_isFavorited;
+                        });
+                        widget.onFavorite();
+                      },
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50.r),
-                          color: const Color.fromARGB(93, 155, 39, 176),
+                          color: _isFavorited
+                              ? const Color.fromARGB(150, 155, 39, 176)
+                              : const Color.fromARGB(93, 155, 39, 176),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Center(
                             child: Icon(
-                              Icons.favorite_border,
+                              _isFavorited
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
                               color: Colors.purple,
                               size: 16.sp,
                             ),
