@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:the9thhour/core/common/constants/iconpath.dart';
+import 'package:the9thhour/core/common/style/global_text_style.dart';
 import 'package:the9thhour/features/favorite_deal/controller/favorite_deal_controller.dart';
 import 'package:the9thhour/features/search_deal/controller/search_deal_controller.dart';
 import 'package:the9thhour/features/search_deal/model/deal_model.dart';
@@ -55,7 +56,10 @@ class DealCardWidget extends StatelessWidget {
                           const SizedBox(width: 4),
                           Text(
                             '${deal.rating} (${deal.reviews} Reviews)',
-                            style: const TextStyle(fontSize: 12),
+                            style: GlobalTextStyle.heading2.copyWith(
+                              fontSize: 12,
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
                         ],
                       ),
@@ -64,11 +68,18 @@ class DealCardWidget extends StatelessWidget {
                         deal.title,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
+                        style: GlobalTextStyle.bodyText.copyWith(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         'From: ${deal.brand}',
-                        style: const TextStyle(fontSize: 12),
+                        style: GlobalTextStyle.bodyText.copyWith(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       const SizedBox(height: 6),
                       Row(
@@ -78,15 +89,18 @@ class DealCardWidget extends StatelessWidget {
                             children: [
                               Text(
                                 '\$${deal.price}',
-                                style: const TextStyle(
-                                  color: Colors.purple,
-                                  fontWeight: FontWeight.bold,
+                                style: GlobalTextStyle.bodyText.copyWith(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w800,
+                                  color: const Color(0xFF5E3E7E),
                                 ),
                               ),
-                              const SizedBox(width: 6),
+                              const SizedBox(width: 10),
                               Text(
                                 '\$${deal.oldPrice}',
-                                style: const TextStyle(
+                                style: GlobalTextStyle.bodyText.copyWith(
+                                  fontSize: 11.sp,
+                                  
                                   decoration: TextDecoration.lineThrough,
                                 ),
                               ),

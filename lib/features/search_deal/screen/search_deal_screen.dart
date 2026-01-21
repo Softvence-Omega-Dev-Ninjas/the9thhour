@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:the9thhour/core/common/constants/iconpath.dart';
+import 'package:the9thhour/core/common/style/global_text_style.dart';
 import '../controller/search_deal_controller.dart';
 import '../widgets/search_bar_widget.dart';
 import '../widgets/filter_chip_widget.dart';
@@ -46,9 +47,9 @@ class SearchDealScreen extends StatelessWidget {
               ),
             ),
           ),
-          title: const Text(
+          title: Text(
             'Search',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            style: GlobalTextStyle.heading3.copyWith(fontSize: 22.sp),
           ),
           centerTitle: true,
         ),
@@ -71,7 +72,7 @@ class SearchDealScreen extends StatelessWidget {
                           SizedBox(width: 8),
                           Text(
                             'Search Results',
-                            style: TextStyle(
+                            style: GlobalTextStyle.heading2.copyWith(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
@@ -80,13 +81,14 @@ class SearchDealScreen extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          const Text('Sort By: '),
+                           Text('Sort By: ',style: GlobalTextStyle.bodyText.copyWith(fontSize: 14,fontWeight: FontWeight.w400),),
                           SizedBox(width: 8.w),
                           PopupMenuButton<String>(
                             onSelected: controller.changeSortOption,
                             itemBuilder: (BuildContext context) {
-                              return controller.sortOptions
-                                  .map((String choice) {
+                              return controller.sortOptions.map((
+                                String choice,
+                              ) {
                                 return PopupMenuItem<String>(
                                   value: choice,
                                   child: Text(choice),
@@ -108,8 +110,9 @@ class SearchDealScreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       controller.selectedSortOption.value,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.normal,
+                                      style: GlobalTextStyle.bodyText.copyWith(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     ),
                                     const SizedBox(width: 4),
@@ -138,7 +141,7 @@ class SearchDealScreen extends StatelessWidget {
                                 brand: controller.brands[index],
                                 isSelected:
                                     controller.selectedBrandIndex.value ==
-                                        index,
+                                    index,
                                 controller: controller,
                               ),
                             ),
