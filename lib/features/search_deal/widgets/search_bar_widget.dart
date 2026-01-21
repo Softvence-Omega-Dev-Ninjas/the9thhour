@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the9thhour/core/common/constants/iconpath.dart';
+
+class SearchBarWidget extends StatelessWidget {
+  final void Function(String)? onChanged;
+  final TextEditingController? controller;
+
+  const SearchBarWidget(
+      {super.key, this.onChanged, this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: TextField(
+            controller: controller,
+            onChanged: onChanged,
+            decoration: InputDecoration(
+              hintText: 'Search beauty products...',
+              hintStyle: TextStyle(
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w400,
+                color: Colors.grey,
+              ),
+              prefixIcon: null,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 20.w,
+                vertical: 12.h,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30.r),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30.r),
+                borderSide: const BorderSide(color: Color(0XFFDE5E93)),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30.r),
+                borderSide: const BorderSide(color: Color(0XFFDE5E93),),
+              ),
+              filled: true,
+              fillColor: Colors.white,
+            ),
+          ),
+        ),
+        SizedBox(width: 12.w),
+        Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+          ),
+          padding: EdgeInsets.all(12.w),
+          child: Image(
+            width: 24.w,
+            height: 24.h,
+            image: AssetImage(IconPath.searchIcon),
+          ),
+        ),
+      ],
+    );
+  }
+}
