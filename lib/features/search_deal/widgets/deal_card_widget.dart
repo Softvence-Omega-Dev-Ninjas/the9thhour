@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:the9thhour/core/common/constants/iconpath.dart';
 import 'package:the9thhour/features/favorite_deal/controller/favorite_deal_controller.dart';
@@ -118,19 +119,21 @@ class DealCardWidget extends StatelessWidget {
                                 FavoriteDealController(),
                               ).toggleFavoriteFromDeal(deal);
                             },
-                            child: Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                shape: BoxShape.circle,
-                              ),
-                              child: GetBuilder<SearchDealController>(
-                                builder: (_) => Icon(
+                            child: GetBuilder<SearchDealController>(
+                              builder: (_) => Container(
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50.r),
+                                  color: deal.isFavorite
+                                      ? const Color.fromARGB(150, 155, 39, 176)
+                                      : const Color.fromARGB(93, 155, 39, 176),
+                                ),
+                                child: Icon(
                                   deal.isFavorite
                                       ? Icons.favorite
                                       : Icons.favorite_border,
                                   color: deal.isFavorite
-                                      ? Color(0XFF6B34AE)
+                                      ? const Color(0xFF6B34AE)
                                       : Colors.black,
                                   size: 20,
                                 ),

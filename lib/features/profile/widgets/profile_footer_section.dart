@@ -9,7 +9,7 @@ class ProfileFooterSection extends StatelessWidget {
   const ProfileFooterSection({
     super.key,
     required this.onLogoutPressed,
-    this.appVersion = 'v1.0',
+    this.appVersion = 'App Version-v1.0',
     this.copyrightText = '©Copyright 2026 - All Right Reserved by The9thHour',
   });
 
@@ -22,9 +22,9 @@ class ProfileFooterSection extends StatelessWidget {
         Text(
           appVersion,
           style: TextStyle(
-            fontSize: 12.sp,
+            fontSize: 12,
             fontWeight: FontWeight.w400,
-            color: Colors.grey,
+            color: Colors.black,
           ),
         ),
         SizedBox(height: 4.h),
@@ -32,9 +32,9 @@ class ProfileFooterSection extends StatelessWidget {
           copyrightText,
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 11.sp,
+            fontSize: 11,
             fontWeight: FontWeight.w400,
-            color: Colors.grey,
+            color: Colors.black,
           ),
         ),
         SizedBox(height: 24.h),

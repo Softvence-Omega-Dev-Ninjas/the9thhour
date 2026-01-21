@@ -19,6 +19,12 @@ class GlobalTextStyle {
     color: Colors.black,
   );
 
+  static TextStyle heading3 = GoogleFonts.playfairDisplay(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+  );
+
   static TextStyle bodyText = GoogleFonts.playfairDisplay(
     fontSize: 16,
     fontWeight: FontWeight.w400,

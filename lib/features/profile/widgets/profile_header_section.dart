@@ -77,8 +77,8 @@ class ProfileHeaderSection extends StatelessWidget {
                 Text(
                   title,
                   style: GlobalTextStyle.bodyText.copyWith(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ],
