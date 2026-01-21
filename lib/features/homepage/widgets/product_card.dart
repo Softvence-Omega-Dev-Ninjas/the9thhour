@@ -169,7 +169,6 @@ class _ProductCardState extends State<ProductCard> {
                   style: GlobalTextStyle.bodyText.copyWith(
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w600,
-                
                   ),
                 ),
 
@@ -257,8 +256,8 @@ class _ProductCardState extends State<ProductCard> {
 
     Get.bottomSheet(
       DraggableScrollableSheet(
-        initialChildSize: 0.45,
-        minChildSize: 0.3,
+        initialChildSize: 0.4,
+        minChildSize: 0.2,
         maxChildSize: 0.9,
         builder: (BuildContext context, ScrollController scrollController) {
           return Container(
