@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:the9thhour/core/common/constants/iconpath.dart';
 import 'package:the9thhour/core/common/style/global_text_style.dart';
 import 'package:the9thhour/features/favorite_deal/controller/favorite_deal_controller.dart';
+import 'package:the9thhour/features/search_deal/model/deal_model.dart';
 
 class FavoriteDealScreen extends StatelessWidget {
   const FavoriteDealScreen({super.key});
@@ -42,9 +43,7 @@ class FavoriteDealScreen extends StatelessWidget {
           ),
           title: Text(
             'Favorite ',
-            style: GlobalTextStyle.heading3.copyWith(
-              fontSize: 22.sp,
-            ),
+            style: GlobalTextStyle.heading3.copyWith(fontSize: 22.sp),
           ),
           centerTitle: true,
         ),
@@ -59,7 +58,7 @@ class FavoriteDealScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Favorite Deals',
-                        style: GlobalTextStyle.heading1 .copyWith(
+                        style: GlobalTextStyle.heading1.copyWith(
                           fontSize: 18.sp,
                         ),
                       ),
@@ -68,9 +67,10 @@ class FavoriteDealScreen extends StatelessWidget {
 
                   Row(
                     children: [
-                      Text('Sort By: ',style: GlobalTextStyle.heading2.copyWith(
-                        fontSize: 12,
-                      ), ),
+                      Text(
+                        'Sort By: ',
+                        style: GlobalTextStyle.heading2.copyWith(fontSize: 12),
+                      ),
                       SizedBox(width: 5.w),
                       PopupMenuButton<String>(
                         onSelected: controller.changeSortOption,
@@ -121,7 +121,8 @@ class FavoriteDealScreen extends StatelessWidget {
                     return ListView.builder(
                       itemCount: controller.favoriteProducts.length,
                       itemBuilder: (context, index) {
-                        final product = controller.favoriteProducts[index];
+                        final DealModel product =
+                            controller.favoriteProducts[index];
                         return Card(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16),
@@ -134,7 +135,7 @@ class FavoriteDealScreen extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Image.asset(
-                                      product.imageUrl,
+                                      product.image,
                                       height: 100,
                                       width: 150,
                                     ),
@@ -177,24 +178,30 @@ class FavoriteDealScreen extends StatelessWidget {
                                               const SizedBox(width: 4),
                                               Text(
                                                 '${product.rating} (${product.reviews} Reviews)',
-                                                style: const TextStyle(
-                                                  fontSize: 12,
-                                                ),
+                                                style: GlobalTextStyle.heading2
+                                                    .copyWith(
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
                                               ),
                                             ],
                                           ),
                                           const SizedBox(height: 4),
                                           Text(
-                                            product.name,
+                                            product.title,
                                             maxLines: 2,
                                             overflow: TextOverflow.ellipsis,
+                                            style: GlobalTextStyle.bodyText.copyWith(
+                                              fontSize: 14.sp,
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                           ),
                                           const SizedBox(height: 4),
                                           Text(
                                             'From: ${product.brand}',
-                                            style: const TextStyle(
-                                              fontSize: 12,
-                                            ),
+                                            style: GlobalTextStyle.heading2
+                                                .copyWith(fontSize: 12),
                                           ),
                                           const SizedBox(height: 6),
                                           Row(
@@ -204,16 +211,18 @@ class FavoriteDealScreen extends StatelessWidget {
                                               Row(
                                                 children: [
                                                   Text(
-                                                    product.price,
-                                                    style: const TextStyle(
-                                                      color: Colors.purple,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
+                                                    '\$${product.price}',
+                                                    style: GlobalTextStyle
+                                                        .heading2
+                                                        .copyWith(
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
                                                   ),
                                                   const SizedBox(width: 6),
                                                   Text(
-                                                    product.originalPrice,
+                                                    '\$${product.oldPrice}',
                                                     style: const TextStyle(
                                                       decoration: TextDecoration
                                                           .lineThrough,

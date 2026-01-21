@@ -3,6 +3,7 @@ import 'package:the9thhour/core/common/constants/iconpath.dart';
 import 'package:the9thhour/core/common/constants/imagepath.dart';
 import 'package:the9thhour/features/favorite_deal/controller/favorite_deal_controller.dart';
 import 'package:the9thhour/features/homepage/models/product_model.dart';
+import 'package:the9thhour/features/search_deal/model/deal_model.dart';
 
 class HomePageController extends GetxController {
   RxInt selectedBrandIndex = 0.obs;
@@ -73,8 +74,32 @@ class HomePageController extends GetxController {
   }
 
   void toggleFavorite(int productIndex) {
-    final FavoriteDealController favoriteController = Get.find();
-    favoriteController.toggleFavorite(products[productIndex]);
+    final FavoriteDealController favoriteController = Get.put(
+      FavoriteDealController(),
+    );
+    final product = products[productIndex];
+
+    // ProductModel কে DealModel এ কনভার্ট করা হচ্ছে
+    final deal = DealModel(
+      title: product.name,
+      brand: product.brand.replaceAll(
+        'From: ',
+        '',
+      ), // 'From: ' টেক্সট সরিয়ে ফেলা হচ্ছে
+      image: product.imageUrl,
+      price:
+          double.tryParse(product.price.replaceAll(RegExp(r'[^0-9.]'), '')) ??
+          0.0,
+      oldPrice:
+          double.tryParse(
+            product.originalPrice.replaceAll(RegExp(r'[^0-9.]'), ''),
+          ) ??
+          0.0,
+      rating: product.rating,
+      reviews: product.reviews,
+    );
+
+    favoriteController.toggleFavoriteFromDeal(deal);
   }
 
   void onSeeMore() {
