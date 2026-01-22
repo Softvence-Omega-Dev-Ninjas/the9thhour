@@ -17,13 +17,13 @@ class IconPath {
   static const String lightskin = 'assets/icons/lightskin.png';
   static const String mediumskin = 'assets/icons/mediumskin.png';
   static const String googleIcon = 'assets/icons/googleIcon.png';
-  static const String copyIcon = 'assets/icons/copy.png';
+  static const String copyIcon = 'assets/icons/copyIcon.png';
   static const String whatsappIcon = 'assets/icons/whatsapp.png';
-  static const String facebookIcon = 'assets/icons/facebook.png';
-  static const String messengerIcon = 'assets/icons/messenger.png';
+  static const String facebookIcon = 'assets/icons/faceBook.png';
+  static const String messengerIcon = 'assets/icons/skype.png';
   static const String twitterIcon = 'assets/icons/twitter.png';
   static const String instagramIcon = 'assets/icons/instagram.png';
-  static const String skypeIcon = 'assets/icons/skype.png';
+  static const String skypeIcon = 'assets/icons/messenger.png';
   static const String messageIcon = 'assets/icons/message.png';
 
 }

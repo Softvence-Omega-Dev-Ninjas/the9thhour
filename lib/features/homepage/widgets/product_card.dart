@@ -398,25 +398,21 @@ class _ProductCardState extends State<ProductCard> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: 50.w,
-            height: 50.w,
+            width: 60.w,
+            height: 60.w,
             decoration: const BoxDecoration(shape: BoxShape.circle),
             child: Center(
               child: Image.asset(
                 imagePath,
-                width: 24.w,
-                height: 24.h,
+                width: 50,
+                height: 50,
                 errorBuilder: (context, error, stackTrace) {
-                  return Icon(
-                    Icons.share,
-                    size: 24.sp,
-                    color: Colors.grey,
-                  );
+                  return Icon(Icons.share, size: 50, color: Colors.grey);
                 },
               ),
             ),
           ),
-          SizedBox(height: 8.h),
+          SizedBox(height: 8),
           Text(
             label,
             textAlign: TextAlign.center,

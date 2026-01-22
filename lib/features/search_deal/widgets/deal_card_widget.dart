@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:the9thhour/core/common/constants/iconpath.dart';
@@ -91,20 +90,29 @@ class DealCardWidget extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Text(
-                                '\$${deal.price}',
-                                style: GlobalTextStyle.bodyText.copyWith(
+                              // Text(
+                              //   '\$${deal.price}',
+                              //   style: GlobalTextStyle.bodyText.copyWith(
+                              //     fontSize: 14.sp,
+                              //     fontWeight: FontWeight.w800,
+                              //     color: const Color(0xFF5E3E7E),
+                              //   ),
+                              // ),
+                                 Text(
+                                "\$${deal.price}",
+                                style: TextStyle(
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w800,
-                                  color: const Color(0xFF5E3E7E),
+                                  color: const Color(0xFFA30293),
                                 ),
                               ),
                               const SizedBox(width: 10),
                               Text(
                                 '\$${deal.oldPrice}',
-                                style: GlobalTextStyle.bodyText.copyWith(
-                                  fontSize: 11.sp,
-
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.grey,
                                   decoration: TextDecoration.lineThrough,
                                 ),
                               ),
@@ -124,9 +132,9 @@ class DealCardWidget extends StatelessWidget {
                               ),
                               minimumSize: const Size(150, 30),
                             ),
-                            child: const Text(
+                            child: Text(
                               'View Deal',
-                              style: TextStyle(color: Colors.white),
+                              style: GlobalTextStyle.bodyText.copyWith(color: Colors.white, fontSize: 12),
                             ),
                           ),
                           const SizedBox(width: 8),
@@ -237,9 +245,8 @@ class DealCardWidget extends StatelessWidget {
                     childAspectRatio: 0.8,
                     children: [
                       _buildShareOption(
-                        icon: Icons.copy,
+                        imagePath: IconPath.copyIcon,
                         label: 'Copy Link',
-                        color: Colors.grey.shade700,
                         onTap: () async {
                           await Clipboard.setData(
                             ClipboardData(text: shareText),
@@ -254,52 +261,45 @@ class DealCardWidget extends StatelessWidget {
                         },
                       ),
                       _buildShareOption(
-                        icon: FontAwesomeIcons.whatsapp,
+                        imagePath: IconPath.whatsappIcon,
                         label: 'WhatsApp',
-                        color: const Color(0xFF25D366),
                         onTap: () =>
                             _launchUrl('whatsapp://send?text=$shareText'),
                       ),
                       _buildShareOption(
-                        icon: FontAwesomeIcons.facebook,
+                        imagePath: IconPath.facebookIcon,
                         label: 'Facebook',
-                        color: const Color(0xFF1877F2),
                         onTap: () => _launchUrl(
                           'https://www.facebook.com/sharer/sharer.php?u=example.com&quote=$shareText',
                         ),
                       ),
                       _buildShareOption(
-                        icon: FontAwesomeIcons.facebookMessenger,
+                        imagePath: IconPath.messengerIcon,
                         label: 'Messenger',
-                        color: const Color(0xFF006AFF),
                         onTap: () => _launchUrl(
-                          'https://www.vecteezy.com/png/21495995-messenger-social-media-logo-icon-png=example.com',
+                          'fb-messenger://share/?link=example.com',
                         ),
                       ),
                       _buildShareOption(
-                        icon: FontAwesomeIcons.twitter,
+                        imagePath: IconPath.twitterIcon,
                         label: 'Twitter',
-                        color: const Color(0xFF1DA1F2),
                         onTap: () => _launchUrl(
                           'https://twitter.com/intent/tweet?text=$shareText',
                         ),
                       ),
                       _buildShareOption(
-                        icon: FontAwesomeIcons.instagram,
+                        imagePath: IconPath.instagramIcon,
                         label: 'Instagram',
-                        color: const Color(0xFFE4405F),
                         onTap: () => _launchUrl('instagram://share'),
                       ),
                       _buildShareOption(
-                        icon: FontAwesomeIcons.skype,
+                        imagePath: IconPath.skypeIcon,
                         label: 'Skype',
-                        color: const Color(0xFF00AFF0),
                         onTap: () => _launchUrl('skype:?chat&topic=$shareText'),
                       ),
                       _buildShareOption(
-                        icon: Icons.message,
+                        imagePath: IconPath.messageIcon,
                         label: 'Message',
-                        color: const Color(0xFF5E3E7E),
                         onTap: () => Share.share(shareText),
                       ),
                     ],
@@ -317,9 +317,8 @@ class DealCardWidget extends StatelessWidget {
   }
 
   Widget _buildShareOption({
-    required IconData icon,
+    required String imagePath,
     required String label,
-    required Color color,
     required VoidCallback onTap,
   }) {
     return GestureDetector(
@@ -328,21 +327,32 @@ class DealCardWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: 50.w,
-            height: 50.w,
-            decoration: BoxDecoration(shape: BoxShape.circle),
+            width: 60.w,
+            height: 60.w,
+            decoration: const BoxDecoration(shape: BoxShape.circle),
             child: Center(
-              child: Icon(icon, color: color, size: 24.sp),
+              child: Image.asset(
+                imagePath,
+                width: 50,
+                height: 50,
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(
+                    Icons.share,
+                    size: 50,
+                    color: Colors.grey,
+                  );
+                },
+              ),
             ),
           ),
-          SizedBox(height: 8.h),
+          SizedBox(height: 8),
           Text(
             label,
             textAlign: TextAlign.center,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: GlobalTextStyle.bodyText.copyWith(
-              fontSize: 11.sp,
+              fontSize: 12.sp,
               fontWeight: FontWeight.w500,
             ),
           ),
