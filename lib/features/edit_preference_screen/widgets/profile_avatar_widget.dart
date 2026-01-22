@@ -15,14 +15,19 @@ class ProfileAvatarWidget extends StatelessWidget {
         children: [
           Obx(
             () => CircleAvatar(
-              radius: 52,
-              backgroundColor: Color(0xFFC84791),
+              radius: 56,
+              backgroundColor: const Color(0xFFC84791),
+          
               child: CircleAvatar(
-                radius: 48,
-                backgroundImage: controller.profileImage.value.isEmpty
-                    ? AssetImage(ImagePath.profileImage)
-                    : FileImage(File(controller.profileImage.value))
-                          as ImageProvider,
+                radius: 52,
+                backgroundColor: const Color.fromARGB(255, 248, 185, 221),
+                child: CircleAvatar(
+                  radius: 48,
+                  backgroundImage: controller.profileImage.value.isEmpty
+                      ? AssetImage(ImagePath.profileImage)
+                      : FileImage(File(controller.profileImage.value))
+                            as ImageProvider,
+                ),
               ),
             ),
           ),
