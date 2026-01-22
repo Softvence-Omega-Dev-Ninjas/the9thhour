@@ -40,7 +40,7 @@ class HomePageController extends GetxController {
       originalPrice: '\$20.99',
       rating: 4.5,
       reviews: 120,
-      imageUrl: ImagePath.product2,
+      imageUrl: ImagePath.product3,
     ),
     ProductModel(
       id: '4',
@@ -50,7 +50,7 @@ class HomePageController extends GetxController {
       originalPrice: '\$25.99',
       rating: 4.5,
       reviews: 120,
-      imageUrl: ImagePath.product2,
+      imageUrl: ImagePath.product4,
     ),
   ];
 
