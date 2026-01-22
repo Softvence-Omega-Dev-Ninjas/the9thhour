@@ -43,9 +43,7 @@ class OnboardingScreen extends StatelessWidget {
                   SizedBox(height: 27),
                   Text(
                     'Beauty That Knows You',
-                    // style: GlobalTextStyle.heading1.copyWith(
-                    //   fontStyle: FontStyle.italic,
-                    // ),
+                  
                     style: GlobalTextStyle.heading1,
                   ),
                   SizedBox(height: 8),
