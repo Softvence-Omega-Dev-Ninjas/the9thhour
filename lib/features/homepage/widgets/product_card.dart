@@ -57,7 +57,7 @@ class _ProductCardState extends State<ProductCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // 1. Image Section - Expanded to fill available top space
+    
           Expanded(
             child: Stack(
               children: [
@@ -78,7 +78,7 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                     child: Image.asset(
                       widget.imageUrl,
-                      //fit: BoxFit.cover,
+                  
                       errorBuilder: (context, error, stackTrace) {
                         return Center(
                           child: Icon(
@@ -114,14 +114,14 @@ class _ProductCardState extends State<ProductCard> {
             ),
           ),
 
-          // 2. Details Section - Takes only the space it needs
+    
           Padding(
             padding: EdgeInsets.all(10.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Rating and Reviews
+        
                 Row(
                   children: [
                     Icon(Icons.star, color: Colors.orange, size: 12.sp),
@@ -174,7 +174,7 @@ class _ProductCardState extends State<ProductCard> {
 
                 SizedBox(height: 8.h),
 
-                // Price Section
+      
                 Row(
                   children: [
                     Text(
@@ -200,7 +200,6 @@ class _ProductCardState extends State<ProductCard> {
 
                 SizedBox(height: 10.h),
 
-                // Actions Section
                 Row(
                   children: [
                     Expanded(
@@ -421,7 +420,7 @@ class _ProductCardState extends State<ProductCard> {
     final Uri url = Uri.parse(urlString);
     try {
       if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-        // Fallback to generic share if specific app launch fails
+    
         Share.share('Check out ${widget.name} by ${widget.brand}!');
       }
     } catch (e) {
