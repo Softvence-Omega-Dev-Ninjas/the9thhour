@@ -56,7 +56,6 @@ class _ProductCardState extends State<ProductCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-    
           Expanded(
             child: Stack(
               children: [
@@ -77,7 +76,7 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                     child: Image.asset(
                       widget.imageUrl,
-                  
+
                       errorBuilder: (context, error, stackTrace) {
                         return Center(
                           child: Icon(
@@ -113,14 +112,12 @@ class _ProductCardState extends State<ProductCard> {
             ),
           ),
 
-    
           Padding(
-            padding: EdgeInsets.all(10.w),
+            padding: const EdgeInsets.all(8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-        
                 Row(
                   children: [
                     ..._buildRatingStars(widget.rating),
@@ -144,7 +141,7 @@ class _ProductCardState extends State<ProductCard> {
                   ],
                 ),
 
-                SizedBox(height: 6.h),
+                SizedBox(height: 6),
 
                 // Product Name
                 Text(
@@ -157,7 +154,7 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                 ),
 
-                SizedBox(height: 4.h),
+                SizedBox(height: 4),
 
                 // Brand
                 Text(
@@ -172,7 +169,6 @@ class _ProductCardState extends State<ProductCard> {
 
                 SizedBox(height: 8.h),
 
-      
                 Row(
                   children: [
                     Text(
@@ -196,13 +192,13 @@ class _ProductCardState extends State<ProductCard> {
                   ],
                 ),
 
-                SizedBox(height: 10.h),
+                SizedBox(height: 10),
 
                 Row(
                   children: [
                     Expanded(
                       child: SizedBox(
-                        height: 36.h,
+                        height: 30,
                         child: CustomSecondaryButton(
                           text: 'View Deal',
                           onPressed: widget.onViewDeal,
@@ -433,7 +429,6 @@ class _ProductCardState extends State<ProductCard> {
     final Uri url = Uri.parse(urlString);
     try {
       if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-    
         Share.share('Check out ${widget.name} by ${widget.brand}!');
       }
     } catch (e) {
