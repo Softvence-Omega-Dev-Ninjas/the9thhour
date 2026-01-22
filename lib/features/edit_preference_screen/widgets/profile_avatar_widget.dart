@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:the9thhour/core/common/constants/imagepath.dart';
 import '../controller/edit_preference_controller.dart';
 
 class ProfileAvatarWidget extends StatelessWidget {
@@ -15,11 +16,11 @@ class ProfileAvatarWidget extends StatelessWidget {
           Obx(
             () => CircleAvatar(
               radius: 52,
-              backgroundColor:Color(0xFFC84791),
+              backgroundColor: Color(0xFFC84791),
               child: CircleAvatar(
                 radius: 48,
                 backgroundImage: controller.profileImage.value.isEmpty
-                    ? const AssetImage('assets/images/profile.png')
+                    ? AssetImage(ImagePath.profileImage)
                     : FileImage(File(controller.profileImage.value))
                           as ImageProvider,
               ),
