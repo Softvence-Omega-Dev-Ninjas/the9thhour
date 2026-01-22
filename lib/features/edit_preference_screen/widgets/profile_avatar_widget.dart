@@ -15,7 +15,7 @@ class ProfileAvatarWidget extends StatelessWidget {
           Obx(
             () => CircleAvatar(
               radius: 52,
-              backgroundColor: Colors.pink,
+              backgroundColor:Color(0xFFC84791),
               child: CircleAvatar(
                 radius: 48,
                 backgroundImage: controller.profileImage.value.isEmpty
@@ -35,7 +35,7 @@ class ProfileAvatarWidget extends StatelessWidget {
               },
               child: CircleAvatar(
                 radius: 14,
-                backgroundColor: Colors.pink,
+                backgroundColor: Color(0xFFC84791),
                 child: Icon(Icons.camera_alt, size: 14, color: Colors.white),
               ),
             ),
