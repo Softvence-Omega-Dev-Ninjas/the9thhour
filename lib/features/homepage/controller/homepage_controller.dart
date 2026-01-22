@@ -8,6 +8,7 @@ import 'package:the9thhour/features/search_deal/model/deal_model.dart';
 class HomePageController extends GetxController {
   RxInt selectedBrandIndex = 0.obs;
   RxString searchQuery = ''.obs;
+  RxSet<String> favoritedProductIds = <String>{}.obs;
 
   final List<ProductModel> products = [
     ProductModel(
@@ -72,34 +73,37 @@ class HomePageController extends GetxController {
   void onViewDeal(int productIndex) {
   }
 
-  void toggleFavorite(int productIndex) {
+void toggleFavorite(int productIndex) {
     final FavoriteDealController favoriteController = Get.put(
       FavoriteDealController(),
     );
     final product = products[productIndex];
-  
+    if (favoritedProductIds.contains(product.id)) {
+      favoritedProductIds.remove(product.id);
+    } else {
+      favoritedProductIds.add(product.id);
+    }
+
     final deal = DealModel(
       title: product.name,
       brand: product.brand.replaceAll(
         'From: ',
         '',
-      ), 
+      ),
       image: product.imageUrl,
       price:
           double.tryParse(product.price.replaceAll(RegExp(r'[^0-9.]'), '')) ??
-          0.0,
+              0.0,
       oldPrice:
           double.tryParse(
             product.originalPrice.replaceAll(RegExp(r'[^0-9.]'), ''),
           ) ??
-          0.0,
+              0.0,
       rating: product.rating,
       reviews: product.reviews,
     );
 
     favoriteController.toggleFavoriteFromDeal(deal);
-  }
-
-  void onSeeMore() {
+  }  void onSeeMore() {
   }
 }

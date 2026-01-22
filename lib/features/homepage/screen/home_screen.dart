@@ -129,7 +129,6 @@ class HomeScreen extends StatelessWidget {
                       crossAxisCount: 2,
                       crossAxisSpacing: 16.w,
                       mainAxisSpacing: 20.h,
-                    
                       childAspectRatio: 0.58,
                     ),
                     itemCount: controller.products.length,
@@ -144,7 +143,9 @@ class HomeScreen extends StatelessWidget {
                         reviews: product.reviews,
                         imageUrl: product.imageUrl,
                         onViewDeal: () => controller.onViewDeal(index),
-                        onFavorite: () => controller.toggleFavorite(index),
+                        controller: controller,
+                        productId: product.id,
+                        index: index,
                       );
                     },
                   ),

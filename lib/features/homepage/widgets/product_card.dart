@@ -7,8 +7,9 @@ import 'package:the9thhour/core/common/constants/iconpath.dart';
 import 'package:the9thhour/core/common/style/global_text_style.dart';
 import 'package:the9thhour/core/common/widgets/custom_secondary_button.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:the9thhour/features/homepage/controller/homepage_controller.dart';
 
-class ProductCard extends StatefulWidget {
+class ProductCard extends StatelessWidget {
   final String name;
   final String brand;
   final String price;
@@ -17,7 +18,9 @@ class ProductCard extends StatefulWidget {
   final int reviews;
   final String imageUrl;
   final VoidCallback onViewDeal;
-  final VoidCallback onFavorite;
+  final HomePageController controller;
+  final String productId;
+  final int index;
 
   const ProductCard({
     super.key,
@@ -29,15 +32,10 @@ class ProductCard extends StatefulWidget {
     required this.reviews,
     required this.imageUrl,
     required this.onViewDeal,
-    required this.onFavorite,
+    required this.controller,
+    required this.productId,
+    required this.index,
   });
-
-  @override
-  State<ProductCard> createState() => _ProductCardState();
-}
-
-class _ProductCardState extends State<ProductCard> {
-  bool _isFavorited = false;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +76,7 @@ class _ProductCardState extends State<ProductCard> {
                       topRight: Radius.circular(12.r),
                     ),
                     child: Image.asset(
-                      widget.imageUrl,
+                      imageUrl,
 
                       errorBuilder: (context, error, stackTrace) {
                         return Center(
@@ -123,10 +121,10 @@ class _ProductCardState extends State<ProductCard> {
               children: [
                 Row(
                   children: [
-                    ..._buildRatingStars(widget.rating),
+                    ..._buildRatingStars(rating),
                     SizedBox(width: 4.w),
                     Text(
-                      '${widget.rating}',
+                      '$rating',
                       style: TextStyle(
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
@@ -135,7 +133,7 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                     SizedBox(width: 4.w),
                     Text(
-                      '(${widget.reviews} reviews)',
+                      '($reviews reviews)',
                       style: GlobalTextStyle.bodyText.copyWith(
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
@@ -148,7 +146,7 @@ class _ProductCardState extends State<ProductCard> {
 
                 // Product Name
                 Text(
-                  widget.name,
+                  name,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: GlobalTextStyle.bodyText.copyWith(
@@ -161,7 +159,7 @@ class _ProductCardState extends State<ProductCard> {
 
                 // Brand
                 Text(
-                  widget.brand,
+                  brand,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: GlobalTextStyle.bodyText.copyWith(
@@ -175,7 +173,7 @@ class _ProductCardState extends State<ProductCard> {
                 Row(
                   children: [
                     Text(
-                      widget.price,
+                      price,
                       style: TextStyle(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w800,
@@ -184,7 +182,7 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                     SizedBox(width: 6.w),
                     Text(
-                      widget.originalPrice,
+                      originalPrice,
                       style: TextStyle(
                         fontSize: 11.sp,
                         fontWeight: FontWeight.w400,
@@ -204,34 +202,31 @@ class _ProductCardState extends State<ProductCard> {
                         height: 30,
                         child: CustomSecondaryButton(
                           text: 'View Deal',
-                          onPressed: widget.onViewDeal,
+                          onPressed: onViewDeal,
                         ),
                       ),
                     ),
                     SizedBox(width: 10.w),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _isFavorited = !_isFavorited;
-                        });
-                        widget.onFavorite();
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50.r),
-                          color: _isFavorited
-                              ? const Color.fromARGB(150, 155, 39, 176)
-                              : const Color.fromARGB(93, 155, 39, 176),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(
-                            child: Icon(
-                              _isFavorited
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              color: Color(0xFF6B34AE),
-                              size: 16.sp,
+                    Obx(
+                      () => GestureDetector(
+                        onTap: () => controller.toggleFavorite(index),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.r),
+                            color: controller.favoritedProductIds.contains(productId)
+                                ? const Color.fromARGB(150, 155, 39, 176)
+                                : const Color.fromARGB(93, 155, 39, 176),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                              child: Icon(
+                                controller.favoritedProductIds.contains(productId)
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Color(0xFF6B34AE),
+                                size: 16.sp,
+                              ),
                             ),
                           ),
                         ),
@@ -265,7 +260,7 @@ class _ProductCardState extends State<ProductCard> {
   }
 
   void _showShareBottomSheet(BuildContext context) {
-    final String shareText = 'Check out ${widget.name} by ${widget.brand}!';
+    final String shareText = 'Check out $name by $brand!';
 
     Get.bottomSheet(
       DraggableScrollableSheet(
@@ -318,10 +313,10 @@ class _ProductCardState extends State<ProductCard> {
                         imagePath: IconPath.copyIcon,
                         label: 'Copy Link',
                         onTap: () async {
+                          Get.back();
                           await Clipboard.setData(
                             ClipboardData(text: shareText),
                           );
-                          Get.back();
                           Get.snackbar(
                             'Success',
                             'Link copied to clipboard',
@@ -432,10 +427,10 @@ class _ProductCardState extends State<ProductCard> {
     final Uri url = Uri.parse(urlString);
     try {
       if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-        Share.share('Check out ${widget.name} by ${widget.brand}!');
+        Share.share('Check out $name by $brand!');
       }
     } catch (e) {
-      Share.share('Check out ${widget.name} by ${widget.brand}!');
+      Share.share('Check out $name by $brand!');
     }
   }
 }
