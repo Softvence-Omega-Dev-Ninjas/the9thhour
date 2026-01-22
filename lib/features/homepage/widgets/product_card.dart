@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:the9thhour/core/common/constants/iconpath.dart';
@@ -98,7 +97,7 @@ class _ProductCardState extends State<ProductCard> {
                     onTap: () => _showShareBottomSheet(context),
                     child: Container(
                       decoration: const BoxDecoration(
-                        color: Color(0xFF5E3E7E),
+                        color: Color(0xFF6B34AE),
                         shape: BoxShape.circle,
                       ),
                       padding: EdgeInsets.all(8.w),
@@ -124,7 +123,7 @@ class _ProductCardState extends State<ProductCard> {
         
                 Row(
                   children: [
-                    Icon(Icons.star, color: Colors.orange, size: 12.sp),
+                    ..._buildRatingStars(widget.rating),
                     SizedBox(width: 4.w),
                     Text(
                       '${widget.rating}',
@@ -137,9 +136,8 @@ class _ProductCardState extends State<ProductCard> {
                     SizedBox(width: 4.w),
                     Text(
                       '(${widget.reviews} reviews)',
-                      style: TextStyle(
+                      style: GlobalTextStyle.bodyText.copyWith(
                         fontSize: 10.sp,
-                        color: Colors.grey,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -182,7 +180,7 @@ class _ProductCardState extends State<ProductCard> {
                       style: TextStyle(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w800,
-                        color: const Color(0xFF5E3E7E),
+                        color: const Color(0xFFA30293),
                       ),
                     ),
                     SizedBox(width: 6.w),
@@ -250,6 +248,23 @@ class _ProductCardState extends State<ProductCard> {
     );
   }
 
+  List<Widget> _buildRatingStars(double rating) {
+    List<Widget> stars = [];
+    int fullStars = rating.floor();
+    bool hasHalfStar = (rating - fullStars) >= 0.5;
+
+    for (int i = 0; i < 5; i++) {
+      if (i < fullStars) {
+        stars.add(Icon(Icons.star, color: Colors.orange, size: 10.sp));
+      } else if (i == fullStars && hasHalfStar) {
+        stars.add(Icon(Icons.star_half, color: Colors.orange, size: 10.sp));
+      } else {
+        stars.add(Icon(Icons.star_border, color: Colors.grey, size: 10.sp));
+      }
+    }
+    return stars;
+  }
+
   void _showShareBottomSheet(BuildContext context) {
     final String shareText = 'Check out ${widget.name} by ${widget.brand}!';
 
@@ -301,9 +316,8 @@ class _ProductCardState extends State<ProductCard> {
                     childAspectRatio: 0.8,
                     children: [
                       _buildShareOption(
-                        icon: Icons.copy,
+                        imagePath: IconPath.copyIcon,
                         label: 'Copy Link',
-                        color: Colors.grey.shade700,
                         onTap: () async {
                           await Clipboard.setData(
                             ClipboardData(text: shareText),
@@ -318,52 +332,45 @@ class _ProductCardState extends State<ProductCard> {
                         },
                       ),
                       _buildShareOption(
-                        icon: FontAwesomeIcons.whatsapp,
+                        imagePath: IconPath.whatsappIcon,
                         label: 'WhatsApp',
-                        color: const Color(0xFF25D366),
                         onTap: () =>
                             _launchUrl('whatsapp://send?text=$shareText'),
                       ),
                       _buildShareOption(
-                        icon: FontAwesomeIcons.facebook,
+                        imagePath: IconPath.facebookIcon,
                         label: 'Facebook',
-                        color: const Color(0xFF1877F2),
                         onTap: () => _launchUrl(
                           'https://www.facebook.com/sharer/sharer.php?u=example.com&quote=$shareText',
                         ),
                       ),
                       _buildShareOption(
-                        icon: FontAwesomeIcons.facebookMessenger,
+                        imagePath: IconPath.messengerIcon,
                         label: 'Messenger',
-                        color: const Color(0xFF006AFF),
                         onTap: () => _launchUrl(
                           'fb-messenger://share/?link=example.com',
                         ),
                       ),
                       _buildShareOption(
-                        icon: FontAwesomeIcons.twitter,
+                        imagePath: IconPath.twitterIcon,
                         label: 'Twitter',
-                        color: const Color(0xFF1DA1F2),
                         onTap: () => _launchUrl(
                           'https://twitter.com/intent/tweet?text=$shareText',
                         ),
                       ),
                       _buildShareOption(
-                        icon: FontAwesomeIcons.instagram,
+                        imagePath: IconPath.instagramIcon,
                         label: 'Instagram',
-                        color: const Color(0xFFE4405F),
                         onTap: () => _launchUrl('instagram://share'),
                       ),
                       _buildShareOption(
-                        icon: FontAwesomeIcons.skype,
+                        imagePath: IconPath.skypeIcon,
                         label: 'Skype',
-                        color: const Color(0xFF00AFF0),
                         onTap: () => _launchUrl('skype:?chat&topic=$shareText'),
                       ),
                       _buildShareOption(
-                        icon: Icons.message,
+                        imagePath: IconPath.messageIcon,
                         label: 'Message',
-                        color: const Color(0xFF5E3E7E),
                         onTap: () => Share.share(shareText),
                       ),
                     ],
@@ -381,9 +388,8 @@ class _ProductCardState extends State<ProductCard> {
   }
 
   Widget _buildShareOption({
-    required IconData icon,
+    required String imagePath,
     required String label,
-    required Color color,
     required VoidCallback onTap,
   }) {
     return GestureDetector(
@@ -394,9 +400,20 @@ class _ProductCardState extends State<ProductCard> {
           Container(
             width: 50.w,
             height: 50.w,
-            decoration: BoxDecoration(shape: BoxShape.circle),
+            decoration: const BoxDecoration(shape: BoxShape.circle),
             child: Center(
-              child: Icon(icon, color: color, size: 24.sp),
+              child: Image.asset(
+                imagePath,
+                width: 24.w,
+                height: 24.h,
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(
+                    Icons.share,
+                    size: 24.sp,
+                    color: Colors.grey,
+                  );
+                },
+              ),
             ),
           ),
           SizedBox(height: 8.h),
