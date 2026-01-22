@@ -11,4 +11,9 @@ class IconPath {
   static const String targetIcon = 'assets/icons/target.png';
   static const String ultaIcon = 'assets/icons/ulta.png';
   static const String shareIcon = 'assets/icons/share.png';
+  static const String handIcon  = 'assets/icons/hand-coin-fill.png';
+  static const String campaignIcon = 'assets/icons/user-campaign.png';
+  static const String redhair = 'assets/icons/redhair.png';
+  static const String lightskin = 'assets/icons/lightskin.png';
+  static const String mediumskin = 'assets/icons/mediumskin.png';
 }
