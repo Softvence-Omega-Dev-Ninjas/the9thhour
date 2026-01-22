@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Initialize controller using GetX
+
     final HomePageController controller = Get.put(HomePageController());
 
     return Scaffold(
@@ -34,7 +34,6 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 10.h),
 
-                  // Header Section (Logo)
                   Image.asset(
                     IconPath.onboardingPageIcon,
                     width: 135.w,
@@ -43,12 +42,12 @@ class HomeScreen extends StatelessWidget {
 
                   SizedBox(height: 22.h),
 
-                  // Search Bar
+  
                   SearchBarWidget(controller: controller),
 
                   SizedBox(height: 19.h),
 
-                  // Explore Today's Best Deal Header
+  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -97,7 +96,6 @@ class HomeScreen extends StatelessWidget {
 
                   SizedBox(height: 22.h),
 
-                  // Brand Filter Chips (Reactive)
                   Obx(
                     () => SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -123,9 +121,7 @@ class HomeScreen extends StatelessWidget {
 
                   SizedBox(height: 20.h),
 
-                  // Product Grid
-                  // childAspectRatio: 0.68 provides enough height for the ProductCard content
-                  // home_screen.dart
+                
                   GridView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -133,8 +129,7 @@ class HomeScreen extends StatelessWidget {
                       crossAxisCount: 2,
                       crossAxisSpacing: 16.w,
                       mainAxisSpacing: 20.h,
-                      // Change this from 0.68 to 0.6 or 0.58
-                      // Lowering this number increases the height of the card.
+                    
                       childAspectRatio: 0.58,
                     ),
                     itemCount: controller.products.length,
