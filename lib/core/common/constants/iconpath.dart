@@ -16,4 +16,6 @@ class IconPath {
   static const String redhair = 'assets/icons/redhair.png';
   static const String lightskin = 'assets/icons/lightskin.png';
   static const String mediumskin = 'assets/icons/mediumskin.png';
+  static const String googleIcon = 'assets/icons/googleIcon.png';
+
 }

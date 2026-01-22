@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:the9thhour/core/common/constants/iconpath.dart';
 import 'package:the9thhour/core/common/style/global_text_style.dart';
 
 class CustomSecondaryButton extends StatelessWidget {
@@ -96,9 +97,10 @@ class CustomSecondaryButton extends StatelessWidget {
                         // Implement Google Sign In Logic
                         Get.back();
                       },
-                      icon: const Icon(
-                        FontAwesomeIcons.google,
-                        color: Colors.white,
+                      icon: Image.asset(
+                        IconPath.googleIcon,
+                        width: 20,
+                        height: 20,
                       ),
                       label: const Text(
                         'Sign in with Google',
