@@ -178,7 +178,7 @@ class FavoriteDealScreen extends StatelessWidget {
                                               const SizedBox(width: 4),
                                               Text(
                                                 '${product.rating} (${product.reviews} Reviews)',
-                                                style: GlobalTextStyle.heading2
+                                                style: GlobalTextStyle.bodyText
                                                     .copyWith(
                                                       fontSize: 12,
                                                       fontWeight:
@@ -212,12 +212,11 @@ class FavoriteDealScreen extends StatelessWidget {
                                                 children: [
                                                   Text(
                                                     '\$${product.price}',
-                                                    style: GlobalTextStyle
-                                                        .heading2
+                                                    style: GlobalTextStyle.bodyText
                                                         .copyWith(
                                                           fontSize: 16,
                                                           fontWeight:
-                                                              FontWeight.w500,
+                                                              FontWeight.bold,
                                                         ),
                                                   ),
                                                   const SizedBox(width: 6),

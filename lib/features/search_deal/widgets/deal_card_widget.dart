@@ -60,7 +60,7 @@ class DealCardWidget extends StatelessWidget {
                           const SizedBox(width: 4),
                           Text(
                             '${deal.rating} (${deal.reviews} Reviews)',
-                            style: GlobalTextStyle.heading2.copyWith(
+                            style: GlobalTextStyle.bodyText.copyWith(
                               fontSize: 12,
                               fontWeight: FontWeight.normal,
                             ),
@@ -273,7 +273,7 @@ class DealCardWidget extends StatelessWidget {
                         label: 'Messenger',
                         color: const Color(0xFF006AFF),
                         onTap: () => _launchUrl(
-                          'fb-messenger://share/?link=example.com',
+                          'https://www.vecteezy.com/png/21495995-messenger-social-media-logo-icon-png=example.com',
                         ),
                       ),
                       _buildShareOption(
