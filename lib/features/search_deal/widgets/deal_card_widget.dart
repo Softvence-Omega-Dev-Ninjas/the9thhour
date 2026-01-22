@@ -20,8 +20,25 @@ class DealCardWidget extends StatelessWidget {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       margin: const EdgeInsets.symmetric(vertical: 8),
+      clipBehavior: Clip.antiAlias,
       child: Stack(
         children: [
+          Positioned(
+            top: 0,
+            left: -145,
+            right: 30,
+            bottom: 0,
+            child: Transform.rotate(
+              angle: -3.1415926535 / 2,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16.0),
+                child: Image.asset(
+                  'assets/images/cardBackground.png',
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(12),
             child: Row(
@@ -98,7 +115,7 @@ class DealCardWidget extends StatelessWidget {
                               //     color: const Color(0xFF5E3E7E),
                               //   ),
                               // ),
-                                 Text(
+                              Text(
                                 "\$${deal.price}",
                                 style: TextStyle(
                                   fontSize: 14.sp,
@@ -134,7 +151,10 @@ class DealCardWidget extends StatelessWidget {
                             ),
                             child: Text(
                               'View Deal',
-                              style: GlobalTextStyle.bodyText.copyWith(color: Colors.white, fontSize: 12),
+                              style: GlobalTextStyle.bodyText.copyWith(
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
                             ),
                           ),
                           const SizedBox(width: 8),
@@ -336,11 +356,7 @@ class DealCardWidget extends StatelessWidget {
                 width: 50,
                 height: 50,
                 errorBuilder: (context, error, stackTrace) {
-                  return Icon(
-                    Icons.share,
-                    size: 50,
-                    color: Colors.grey,
-                  );
+                  return Icon(Icons.share, size: 50, color: Colors.grey);
                 },
               ),
             ),
@@ -405,12 +421,24 @@ class DealCardWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 24.h),
-                  Text(
-                    'Login With Google',
-                    style: GlobalTextStyle.heading1.copyWith(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Login With ',
+                        style: GlobalTextStyle.heading2.copyWith(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        'Google',
+                        style: GlobalTextStyle.heading1.copyWith(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600, // Google's blue color
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 12.h),
                   Text(
@@ -434,9 +462,9 @@ class DealCardWidget extends StatelessWidget {
                         width: 24.w,
                         height: 24.h,
                       ),
-                      label: const Text(
+                      label: Text(
                         'Sign in with Google',
-                        style: TextStyle(color: Colors.white),
+                        style: GlobalTextStyle.bodyText.copyWith(color: Colors.white),
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF6B34AE),

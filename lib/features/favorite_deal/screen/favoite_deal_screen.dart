@@ -128,8 +128,25 @@ class FavoriteDealScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(16),
                           ),
                           margin: const EdgeInsets.symmetric(vertical: 8),
+                          clipBehavior: Clip.antiAlias,
                           child: Stack(
                             children: [
+                                  Positioned(
+                                top: 0,
+                                left: -145,
+                                right: 30,
+                                bottom: 0,
+                                child: Transform.rotate(
+                                  angle: -3.1415926535 / 2,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(16.0),
+                                    child: Image.asset(
+                                      'assets/images/cardBackground.png',
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                ),
+                              ),
                               Padding(
                                 padding: const EdgeInsets.all(12),
                                 child: Row(
@@ -210,14 +227,25 @@ class FavoriteDealScreen extends StatelessWidget {
                                             children: [
                                               Row(
                                                 children: [
-                                                  Text(
-                                                    '\$${product.price}',
-                                                    style: GlobalTextStyle.bodyText
-                                                        .copyWith(
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
+                                                  // Text(
+                                                  //   '\$${product.price}',
+                                                  //   style: GlobalTextStyle.bodyText
+                                                  //       .copyWith(
+                                                  //         fontSize: 16,
+                                                  //         fontWeight:
+                                                  //             FontWeight.bold,
+                                                  //       ),
+                                                  // ),
+                                                     Text(
+                                                    "\$${product.price}",
+                                                    style: TextStyle(
+                                                      fontSize: 14.sp,
+                                                      fontWeight:
+                                                          FontWeight.w800,
+                                                      color: const Color(
+                                                        0xFFA30293,
+                                                      ),
+                                                    ),
                                                   ),
                                                   const SizedBox(width: 6),
                                                   Text(
