@@ -54,12 +54,21 @@ class FavoriteDealScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
+                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Favorite Deals',
+                        'Favorite ',
+                        style: GlobalTextStyle.heading2.copyWith(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        'Deals',
                         style: GlobalTextStyle.heading1.copyWith(
-                          fontSize: 18.sp,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600, // Google's blue color
                         ),
                       ),
                     ],

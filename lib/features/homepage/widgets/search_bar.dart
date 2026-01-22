@@ -13,26 +13,40 @@ class SearchBarWidget extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: TextField(
-            onChanged: controller.updateSearchQuery,
-            decoration: InputDecoration(
-              hintText: 'Search beauty products...',
-              hintStyle: TextStyle(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-                color: Colors.grey,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(30.r),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.pink.withAlpha(30),
+                  spreadRadius: 2,
+                  blurRadius: 4,
+                  offset: const Offset(0, 8),
+                ),
+              ],
+            ),
+            child: TextField(
+              onChanged: controller.updateSearchQuery,
+              decoration: InputDecoration(
+                hintText: 'Search beauty products...',
+                hintStyle: TextStyle(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.grey,
+                ),
+                prefixIcon: null,
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 20.w,
+                  vertical: 12.h,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.r),
+                  borderSide: BorderSide.none,
+                ),
+                filled: true,
+                fillColor: Colors.transparent,
               ),
-              prefixIcon: null,
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: 20.w,
-                vertical: 12.h,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30.r),
-                borderSide: BorderSide.none,
-              ),
-              filled: true,
-              fillColor: Colors.white,
             ),
           ),
         ),

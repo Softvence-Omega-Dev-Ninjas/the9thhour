@@ -293,12 +293,25 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 24.h),
-                  Text(
-                    'Share With Friends',
-                    style: GlobalTextStyle.heading2.copyWith(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Share With ',
+                        style: GlobalTextStyle.heading2.copyWith(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(width: 8.w),
+                      Text(
+                        'Friends',
+                        style: GlobalTextStyle.heading1.copyWith(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 20),
                   GridView.count(
