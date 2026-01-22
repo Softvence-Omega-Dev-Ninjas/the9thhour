@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the9thhour/core/common/constants/iconpath.dart';
+import 'package:the9thhour/core/common/constants/imagepath.dart';
 import 'package:the9thhour/core/common/style/global_text_style.dart';
 
 class BeautyProfileCard extends StatelessWidget {
@@ -32,7 +34,6 @@ class BeautyProfileCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -81,7 +82,7 @@ class BeautyProfileCard extends StatelessWidget {
               ],
             ),
             SizedBox(height: 16.h),
-            
+
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -100,7 +101,7 @@ class BeautyProfileCard extends StatelessWidget {
                   _ProfileDetailRow(
                     label: 'Skin Tone:',
                     value: skinTone,
-                    hasIcon: true,
+                    iconPath: IconPath.mediumskin,
                   ),
                   SizedBox(height: 8.h),
                   const Divider(color: Color(0xFFE8E8E8), thickness: 1),
@@ -108,7 +109,7 @@ class BeautyProfileCard extends StatelessWidget {
                   _ProfileDetailRow(
                     label: 'Skin Type:',
                     value: skinType,
-                    hasIcon: true,
+                    iconPath: IconPath.lightskin,
                   ),
                   SizedBox(height: 8.h),
                   const Divider(color: Color(0xFFE8E8E8), thickness: 1),
@@ -116,19 +117,23 @@ class BeautyProfileCard extends StatelessWidget {
                   _ProfileDetailRow(
                     label: 'Hair Type:',
                     value: hairType,
-                    hasIcon: true,
+                    iconPath: IconPath.redhair,
                   ),
                   SizedBox(height: 8.h),
                   const Divider(color: Color(0xFFE8E8E8), thickness: 1),
                   SizedBox(height: 8.h),
-                  _ProfileDetailRow(label: 'Goal:', value: goal, hasIcon: true),
+                  _ProfileDetailRow(
+                    label: 'Goal:',
+                    value: goal,
+                    iconPath: IconPath.campaignIcon,
+                  ),
                   SizedBox(height: 8.h),
                   const Divider(color: Color(0xFFE8E8E8), thickness: 1),
                   SizedBox(height: 8.h),
                   _ProfileDetailRow(
                     label: 'Budget:',
                     value: budget,
-                    hasIcon: true,
+                    iconPath: IconPath.handIcon,
                   ),
                 ],
               ),
@@ -143,12 +148,12 @@ class BeautyProfileCard extends StatelessWidget {
 class _ProfileDetailRow extends StatelessWidget {
   final String label;
   final String value;
-  final bool hasIcon;
+  final String iconPath;
 
   const _ProfileDetailRow({
     required this.label,
     required this.value,
-    required this.hasIcon,
+    required this.iconPath,
   });
 
   @override
@@ -156,17 +161,10 @@ class _ProfileDetailRow extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        if (hasIcon)
-          SizedBox(
-            width: 20.w,
-            child: Image.asset(
-              'assets/icons/bullet_icon.png', 
-              width: 10.w,
-              height: 10.h,
-            ),
-          )
-        else
-          SizedBox(width: 20.w),
+        SizedBox(
+          width: 20.w,
+          child: Image.asset(iconPath, width: 20, height: 20),
+        ),
         SizedBox(width: 8.w),
         SizedBox(
           width: 100.w,
