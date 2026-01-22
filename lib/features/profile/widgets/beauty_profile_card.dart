@@ -32,7 +32,7 @@ class BeautyProfileCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header with Title and Edit Button
+          
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -81,7 +81,7 @@ class BeautyProfileCard extends StatelessWidget {
               ],
             ),
             SizedBox(height: 16.h),
-            // White Card with Details
+            
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -160,7 +160,7 @@ class _ProfileDetailRow extends StatelessWidget {
           SizedBox(
             width: 20.w,
             child: Image.asset(
-              'assets/icons/bullet_icon.png', // Replace with your asset path
+              'assets/icons/bullet_icon.png', 
               width: 10.w,
               height: 10.h,
             ),
