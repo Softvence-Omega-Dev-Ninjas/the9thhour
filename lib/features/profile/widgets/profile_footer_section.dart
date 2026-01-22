@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the9thhour/core/common/style/global_text_style.dart';
 
 class ProfileFooterSection extends StatelessWidget {
   final VoidCallback onLogoutPressed;
@@ -20,21 +21,13 @@ class ProfileFooterSection extends StatelessWidget {
         SizedBox(height: 20.h),
         Text(
           appVersion,
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            color: Colors.black,
-          ),
+          style: GlobalTextStyle.bodyText.copyWith(fontSize: 12),
         ),
         SizedBox(height: 4.h),
         Text(
           copyrightText,
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 11,
-            fontWeight: FontWeight.w400,
-            color: Colors.black,
-          ),
+          style:GlobalTextStyle.bodyText.copyWith(fontSize: 12),
         ),
         SizedBox(height: 24.h),
         SizedBox(
@@ -43,7 +36,7 @@ class ProfileFooterSection extends StatelessWidget {
           child: ElevatedButton(
             onPressed: onLogoutPressed,
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF5E3E7E),
+              backgroundColor: const Color(0xFF6B34AE),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24.r),
               ),
