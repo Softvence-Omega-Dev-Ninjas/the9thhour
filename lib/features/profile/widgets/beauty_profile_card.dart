@@ -25,8 +25,12 @@ class BeautyProfileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 255, 203, 225),
+        color: const Color(0xFFF7D5E8),
         borderRadius: BorderRadius.circular(22.r),
+        border: Border.all(
+          color: const Color.fromARGB(255, 236, 197, 223),
+          width: 0,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(14.0),
@@ -86,6 +90,7 @@ class BeautyProfileCard extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16.r),
+                border: Border.all(color: const Color(0xFFE8E8E8)),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.05),
@@ -102,33 +107,33 @@ class BeautyProfileCard extends StatelessWidget {
                     value: skinTone,
                     iconPath: IconPath.mediumskin,
                   ),
-                  SizedBox(height: 8.h),
-                  const Divider(color: Color(0xFFE8E8E8), thickness: 1),
-                  SizedBox(height: 8.h),
+                  SizedBox(height: 6),
+                  const Divider(color:  Color(0xFFF7D5E8),thickness: 1),
+                  SizedBox(height: 6),
                   _ProfileDetailRow(
                     label: 'Skin Type:',
                     value: skinType,
                     iconPath: IconPath.lightskin,
                   ),
-                  SizedBox(height: 8.h),
-                  const Divider(color: Color(0xFFE8E8E8), thickness: 1),
-                  SizedBox(height: 8.h),
+                  SizedBox(height: 6),
+                  const Divider(color: Color(0xFFF7D5E8), thickness: 1),
+                  SizedBox(height: 6),
                   _ProfileDetailRow(
                     label: 'Hair Type:',
                     value: hairType,
                     iconPath: IconPath.redhair,
                   ),
-                  SizedBox(height: 8.h),
-                  const Divider(color: Color(0xFFE8E8E8), thickness: 1),
-                  SizedBox(height: 8.h),
+                  SizedBox(height: 6),
+                  const Divider(color:  Color(0xFFF7D5E8), thickness: 1),
+                  SizedBox(height: 6),
                   _ProfileDetailRow(
                     label: 'Goal:',
                     value: goal,
                     iconPath: IconPath.campaignIcon,
                   ),
-                  SizedBox(height: 8.h),
-                  const Divider(color: Color(0xFFE8E8E8), thickness: 1),
-                  SizedBox(height: 8.h),
+                  SizedBox(height: 6),
+                  const Divider(color:  Color(0xFFF7D5E8), thickness: 1),
+                  SizedBox(height: 6),
                   _ProfileDetailRow(
                     label: 'Budget:',
                     value: budget,
