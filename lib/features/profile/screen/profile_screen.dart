@@ -64,6 +64,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             body: SafeArea(
               child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 16.w,
