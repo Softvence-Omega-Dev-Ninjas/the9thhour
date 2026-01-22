@@ -21,7 +21,7 @@ class ProfileModel {
     required this.budget,
   });
 
-  // Copy with method for updating profile
+
   ProfileModel copyWith({
     String? id,
     String? name,
@@ -46,7 +46,6 @@ class ProfileModel {
     );
   }
 
-  // Convert to JSON
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -61,7 +60,7 @@ class ProfileModel {
     };
   }
 
-  // Create from JSON
+
   factory ProfileModel.fromJson(Map<String, dynamic> json) {
     return ProfileModel(
       id: json['id'] as String,
