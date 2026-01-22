@@ -61,7 +61,7 @@ class ProductCard extends StatelessWidget {
                   width: double.infinity,
                   height: 282.h,
                   decoration: BoxDecoration(
-                  image: const DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage('assets/images/cardBackground.png'),
                       fit: BoxFit.cover,
                     ),
@@ -213,7 +213,10 @@ class ProductCard extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50.r),
-                            color: controller.favoritedProductIds.contains(productId)
+                            color:
+                                controller.favoritedProductIds.contains(
+                                  productId,
+                                )
                                 ? const Color.fromARGB(150, 155, 39, 176)
                                 : const Color.fromARGB(93, 155, 39, 176),
                           ),
@@ -221,7 +224,9 @@ class ProductCard extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: Center(
                               child: Icon(
-                                controller.favoritedProductIds.contains(productId)
+                                controller.favoritedProductIds.contains(
+                                      productId,
+                                    )
                                     ? Icons.favorite
                                     : Icons.favorite_border,
                                 color: Color(0xFF6B34AE),
