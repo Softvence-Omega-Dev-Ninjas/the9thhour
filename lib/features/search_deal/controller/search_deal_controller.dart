@@ -61,7 +61,6 @@ class SearchDealController extends GetxController {
   void changeSortOption(String? option) {
     if (option != null) {
       selectedSortOption.value = option;
-      // TODO: Implement actual sorting logic for deals
     }
   }
 

@@ -53,7 +53,6 @@ class SearchDealScreen extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        // bottomNavigationBar: const BottomNavWidget(),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
@@ -81,7 +80,13 @@ class SearchDealScreen extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                           Text('Sort By: ',style: GlobalTextStyle.bodyText.copyWith(fontSize: 14,fontWeight: FontWeight.w400),),
+                          Text(
+                            'Sort By: ',
+                            style: GlobalTextStyle.bodyText.copyWith(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
                           SizedBox(width: 8.w),
                           PopupMenuButton<String>(
                             onSelected: controller.changeSortOption,
