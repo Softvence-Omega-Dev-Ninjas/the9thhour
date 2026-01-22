@@ -73,12 +73,24 @@ class CustomSecondaryButton extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 24.h),
-                  Text(
-                    'Login With Google',
-                    style: GlobalTextStyle.heading1.copyWith(
-                      fontSize: 22.sp,
-                      fontWeight: FontWeight.w600,
-                    ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Login With ',
+                        style: GlobalTextStyle.heading2.copyWith(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        'Google',
+                        style: GlobalTextStyle.heading1.copyWith(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600, // Google's blue color
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 12.h),
                   Text(

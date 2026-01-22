@@ -248,12 +248,24 @@ class DealCardWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 24.h),
-                  Text(
-                    'Share With Friends',
-                    style: GlobalTextStyle.heading2.copyWith(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Share With ',
+                        style: GlobalTextStyle.heading2.copyWith(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        'Friends',
+                        style: GlobalTextStyle.heading1.copyWith(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600, // Google's blue color
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 20),
                   GridView.count(
