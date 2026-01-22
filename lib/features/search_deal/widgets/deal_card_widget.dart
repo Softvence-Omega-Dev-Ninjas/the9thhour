@@ -419,9 +419,10 @@ class DealCardWidget extends StatelessWidget {
                         // Implement Google Sign In Logic
                         Get.back();
                       },
-                      icon: const Icon(
-                        FontAwesomeIcons.google,
-                        color: Colors.white,
+                      icon: Image.asset(
+                        IconPath.googleIcon,
+                        width: 24.w,
+                        height: 24.h,
                       ),
                       label: const Text(
                         'Sign in with Google',
