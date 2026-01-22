@@ -18,7 +18,6 @@ class ProfileFooterSection extends StatelessWidget {
     return Column(
       children: [
         SizedBox(height: 20.h),
-        // App Version and Copyright
         Text(
           appVersion,
           style: TextStyle(
@@ -38,7 +37,6 @@ class ProfileFooterSection extends StatelessWidget {
           ),
         ),
         SizedBox(height: 24.h),
-        // Logout Button
         SizedBox(
           width: double.infinity,
           height: 48.h,
