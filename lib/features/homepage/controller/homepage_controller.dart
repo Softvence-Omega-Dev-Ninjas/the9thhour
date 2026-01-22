@@ -70,7 +70,6 @@ class HomePageController extends GetxController {
   }
 
   void onViewDeal(int productIndex) {
-    // TODO: Implement view deal logic
   }
 
   void toggleFavorite(int productIndex) {
@@ -78,14 +77,13 @@ class HomePageController extends GetxController {
       FavoriteDealController(),
     );
     final product = products[productIndex];
-
-    // ProductModel কে DealModel এ কনভার্ট করা হচ্ছে
+  
     final deal = DealModel(
       title: product.name,
       brand: product.brand.replaceAll(
         'From: ',
         '',
-      ), // 'From: ' টেক্সট সরিয়ে ফেলা হচ্ছে
+      ), 
       image: product.imageUrl,
       price:
           double.tryParse(product.price.replaceAll(RegExp(r'[^0-9.]'), '')) ??
@@ -103,6 +101,5 @@ class HomePageController extends GetxController {
   }
 
   void onSeeMore() {
-    // TODO: Navigate to deals page
   }
 }
