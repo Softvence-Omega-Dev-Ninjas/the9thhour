@@ -63,7 +63,10 @@ class _ProductCardState extends State<ProductCard> {
                   width: double.infinity,
                   height: 282.h,
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                  image: const DecorationImage(
+                      image: AssetImage('assets/images/cardBackground.png'),
+                      fit: BoxFit.cover,
+                    ),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(12.r),
                       topRight: Radius.circular(12.r),
