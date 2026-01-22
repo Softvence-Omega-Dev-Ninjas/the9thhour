@@ -22,7 +22,7 @@ class SearchDealController extends GetxController {
     DealModel(
       title: 'THE CRÈME - Advanced Hydration Gradual Self...',
       brand: 'TAN-LUXE',
-      image: 'assets/images/product1.png',
+      image: 'assets/images/pProduct.png',
       price: 12.25,
       oldPrice: 28.00,
       rating: 4.5,
@@ -31,7 +31,7 @@ class SearchDealController extends GetxController {
     DealModel(
       title: 'Ceramide Grinding Cleansing Balm',
       brand: 'Kora Beauty',
-      image: 'assets/images/product2.png',
+      image: 'assets/images/product4.png',
       price: 18.00,
       oldPrice: 36.99,
       rating: 4.5,
@@ -40,7 +40,7 @@ class SearchDealController extends GetxController {
     DealModel(
       title: 'New Product Title',
       brand: 'New Brand',
-      image: 'assets/images/product1.png',
+      image: 'assets/images/product3.png',
       price: 25.00,
       oldPrice: 50.00,
       rating: 4.0,
