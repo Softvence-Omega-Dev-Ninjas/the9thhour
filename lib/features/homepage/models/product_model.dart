@@ -19,7 +19,7 @@ class ProductModel {
     required this.imageUrl,
   });
 
-  // Convert to JSON
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -33,7 +33,7 @@ class ProductModel {
     };
   }
 
-  // Create from JSON
+
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
       id: json['id'] as String,
