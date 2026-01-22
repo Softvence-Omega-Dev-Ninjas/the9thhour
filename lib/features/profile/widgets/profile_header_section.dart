@@ -12,7 +12,6 @@ class ProfileHeaderSection extends StatelessWidget {
     required this.profileImage,
     required this.name,
     required this.title,
-    //required this.onBackPressed,
   });
 
   @override
@@ -20,11 +19,8 @@ class ProfileHeaderSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Back Button and Title
-        // Profile Section
         Row(
           children: [
-            // Profile Image
             Container(
               width: 72.w,
               height: 72.w,
@@ -39,7 +35,6 @@ class ProfileHeaderSection extends StatelessWidget {
                     ),
             ),
             SizedBox(width: 20.w),
-            // Name and Title
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
