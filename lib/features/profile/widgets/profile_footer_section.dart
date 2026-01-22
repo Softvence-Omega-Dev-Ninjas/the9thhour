@@ -46,10 +46,10 @@ class ProfileFooterSection extends StatelessWidget {
               children: [
                 Text(
                   'Log Out',
-                  style: TextStyle(
-                    fontSize: 16.sp,
+                  style: GlobalTextStyle.bodyText.copyWith(
                     fontWeight: FontWeight.w600,
                     color: Colors.white,
+                    fontSize: 16.sp,
                   ),
                 ),
                 SizedBox(width: 8.w),
