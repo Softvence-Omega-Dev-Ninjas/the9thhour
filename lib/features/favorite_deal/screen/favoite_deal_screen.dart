@@ -97,7 +97,7 @@ class FavoriteDealScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   controller.selectedSortOption.value,
-                                  style: GlobalTextStyle.heading2.copyWith(
+                                  style: GlobalTextStyle.bodyText.copyWith(
                                     fontSize: 14,
                                   ),
                                 ),
