@@ -8,12 +8,12 @@ class ProfileController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Initialize with default user data
+  
     userProfile = ProfileModel(
       id: '1',
       name: 'Katona Beatrix',
       title: 'Beauty Care Specialist',
-      profileImage: ImagePath.profileImage, // Will be added later
+      profileImage: ImagePath.profileImage, 
       skinTone: 'Deep/Melanin-Rich',
       skinType: 'Oily',
       hairType: 'Straight',
