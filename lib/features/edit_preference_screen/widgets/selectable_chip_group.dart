@@ -26,18 +26,18 @@ class SelectableChipGroup extends StatelessWidget {
           return ChoiceChip(
             label: Text(
               item,
-              style: GlobalTextStyle.heading2.copyWith(fontSize: 13),
+              style: GlobalTextStyle.heading2.copyWith(
+                fontSize: 13,
+                color: isSelected ? Colors.white : Colors.black,
+              ),
             ),
             selected: isSelected,
             showCheckmark: false,
-            selectedColor: Colors.deepPurple,
+            selectedColor: const Color(0xFf6B34AE),
             backgroundColor: Colors.white,
-            labelStyle: TextStyle(
-              color: isSelected ? Colors.white : Colors.black,
-            ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(100),
-              side: const BorderSide(color: Colors.transparent),
+              side: const BorderSide(color:Color(0xFFD8BBC7)),
             ),
             onSelected: (_) => onSelected(item),
           );
