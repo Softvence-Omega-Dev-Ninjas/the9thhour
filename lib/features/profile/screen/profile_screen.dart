@@ -73,7 +73,6 @@ class ProfileScreen extends StatelessWidget {
                     () => Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Header Section
                         ProfileHeaderSection(
                           profileImage:
                               controller.userProfile.value.profileImage,
@@ -83,7 +82,6 @@ class ProfileScreen extends StatelessWidget {
 
                         SizedBox(height: 24.h),
 
-                        // Beauty Profile Card
                         BeautyProfileCard(
                           skinTone: controller.userProfile.value.skinTone,
                           skinType: controller.userProfile.value.skinType,
@@ -93,7 +91,6 @@ class ProfileScreen extends StatelessWidget {
                           onEditPressed: controller.editPreference,
                         ),
 
-                        // Footer Section
                         ProfileFooterSection(
                           onLogoutPressed: controller.logout,
                         ),
