@@ -114,9 +114,11 @@ class CustomSecondaryButton extends StatelessWidget {
                         width: 20,
                         height: 20,
                       ),
-                      label: const Text(
+                      label: Text(
                         'Sign in with Google',
-                        style: TextStyle(color: Colors.white),
+                        style: GlobalTextStyle.bodyText.copyWith(
+                          color: Colors.white,
+                        ),
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF6B34AE),
