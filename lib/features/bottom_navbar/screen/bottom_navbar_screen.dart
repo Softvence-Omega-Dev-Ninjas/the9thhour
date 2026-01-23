@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:the9thhour/core/common/constants/app_colors.dart';
 import 'package:the9thhour/core/common/constants/iconpath.dart';
+import 'package:the9thhour/core/common/style/global_text_style.dart';
 import 'package:the9thhour/features/bottom_navbar/controller/bottom_navbar_controller.dart';
 import 'package:the9thhour/features/favorite_deal/screen/favoite_deal_screen.dart';
 import 'package:the9thhour/features/homepage/screen/home_screen.dart';
@@ -61,11 +62,11 @@ class NavBarScreen extends StatelessWidget {
                           ? AppColors.primaryTextColor
                           : AppColors.secondaryTextColor,
                     ),
-                    SizedBox(height: 4.h),
+                    SizedBox(height: 2),
                     Text(
                       labels[index],
-                      style: TextStyle(
-                        fontSize: 16.sp,
+                      style: GlobalTextStyle.heading2.copyWith(
+                        fontSize: 16,
                         fontWeight: FontWeight.w400,
                         color: isSelected
                             ? AppColors.primaryTextColor
