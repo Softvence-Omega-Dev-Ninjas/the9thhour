@@ -140,20 +140,24 @@ class DealCardWidget extends StatelessWidget {
                       const SizedBox(height: 8),
                       Row(
                         children: [
-                          ElevatedButton(
-                            onPressed: () => _showLoginBottomSheet(context),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF6B34AE),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () => _showLoginBottomSheet(context),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF6B34AE),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                ),
+                                minimumSize: const Size(0, 30),
                               ),
-                              minimumSize: const Size(150, 30),
-                            ),
-                            child: Text(
-                              'View Deal',
-                              style: GlobalTextStyle.bodyText.copyWith(
-                                color: Colors.white,
-                                fontSize: 12,
+                              child: Text(
+                                'View Deal',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: GlobalTextStyle.bodyText.copyWith(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                ),
                               ),
                             ),
                           ),
@@ -167,7 +171,7 @@ class DealCardWidget extends StatelessWidget {
                             },
                             child: GetBuilder<SearchDealController>(
                               builder: (_) => Container(
-                                padding: const EdgeInsets.all(8),
+                                padding: const EdgeInsets.all(5),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50.r),
                                   color: deal.isFavorite
@@ -476,7 +480,9 @@ class DealCardWidget extends StatelessWidget {
                       ),
                       label: Text(
                         'Sign in with Google',
-                        style: GlobalTextStyle.bodyText.copyWith(color: Colors.white),
+                        style: GlobalTextStyle.bodyText.copyWith(
+                          color: Colors.white,
+                        ),
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF6B34AE),

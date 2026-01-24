@@ -300,28 +300,30 @@ class FavoriteDealScreen extends StatelessWidget {
                                               const SizedBox(height: 8),
                                               Row(
                                                 children: [
-                                                  ElevatedButton(
-                                                    onPressed: () {},
-                                                    style: ElevatedButton.styleFrom(
-                                                      backgroundColor:
-                                                          const Color(
-                                                            0xFF6B34AE,
-                                                          ),
-                                                      shape: RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                              18.0,
+                                                  Expanded(
+                                                    child: ElevatedButton(
+                                                      onPressed: () {},
+                                                      style: ElevatedButton.styleFrom(
+                                                        backgroundColor:
+                                                            const Color(
+                                                              0xFF6B34AE,
                                                             ),
+                                                        shape: RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius.circular(
+                                                                18.0,
+                                                              ),
+                                                        ),
+                                                        minimumSize: const Size(
+                                                          0,
+                                                          30,
+                                                        ),
                                                       ),
-                                                      minimumSize: const Size(
-                                                        150,
-                                                        30,
-                                                      ),
-                                                    ),
-                                                    child: const Text(
-                                                      'View Deal',
-                                                      style: TextStyle(
-                                                        color: Colors.white,
+                                                      child: const Text(
+                                                        'View Deal',
+                                                        style: TextStyle(
+                                                          color: Colors.white,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
