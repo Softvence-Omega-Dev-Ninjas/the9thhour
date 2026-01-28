@@ -69,7 +69,7 @@ class FavoriteDealScreen extends StatelessWidget {
                         'Deals',
                         style: GlobalTextStyle.heading1.copyWith(
                           fontSize: 22,
-                          fontWeight: FontWeight.w600, // Google's blue color
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ],
