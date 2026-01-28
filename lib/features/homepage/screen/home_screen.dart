@@ -13,7 +13,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final HomePageController controller = Get.put(HomePageController());
 
     return Scaffold(
@@ -42,12 +41,10 @@ class HomeScreen extends StatelessWidget {
 
                   SizedBox(height: 22.h),
 
-  
                   SearchBarWidget(controller: controller),
 
-                  SizedBox(height: 19.h),
+                  SizedBox(height: 12),
 
-  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -119,9 +116,8 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(height: 20.h),
+                  SizedBox(height: 22.h),
 
-                
                   GridView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -150,7 +146,7 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
 
-                  SizedBox(height: 20.h),
+                  SizedBox(height: 50),
                 ],
               ),
             ),
