@@ -30,7 +30,7 @@ class ProfileDetailRow extends StatelessWidget {
             label,
             style: GlobalTextStyle.heading2.copyWith(
               fontSize: 15,
-              fontWeight: FontWeight.normal,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
@@ -39,7 +39,7 @@ class ProfileDetailRow extends StatelessWidget {
             value,
             style: GlobalTextStyle.heading2.copyWith(
               fontSize: 14,
-              fontWeight: FontWeight.normal,
+              fontWeight: FontWeight.w400,
             ),
             textAlign: TextAlign.left,
           ),

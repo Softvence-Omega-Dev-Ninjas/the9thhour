@@ -17,7 +17,6 @@ class ProfileFooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    // বাটনের হাইট স্ক্রিন অনুযায়ী ফিক্সড রাখা হলো যাতে চ্যাপ্টা না হয়
     final double buttonHeight = size.width > 600 ? 56.0 : 48.0;
 
     return Column(
@@ -25,7 +24,10 @@ class ProfileFooterSection extends StatelessWidget {
         SizedBox(height: size.height * 0.025),
         Text(
           appVersion,
-          style: GlobalTextStyle.bodyText.copyWith(fontSize: 12),
+          style: GlobalTextStyle.bodyText.copyWith(
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+          ),
         ),
         SizedBox(height: size.height * 0.005),
         Text(
