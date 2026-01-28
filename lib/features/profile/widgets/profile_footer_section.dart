@@ -16,29 +16,33 @@ class ProfileFooterSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    // বাটনের হাইট স্ক্রিন অনুযায়ী ফিক্সড রাখা হলো যাতে চ্যাপ্টা না হয়
+    final double buttonHeight = size.width > 600 ? 56.0 : 48.0;
+
     return Column(
       children: [
-        SizedBox(height: 20.h),
+        SizedBox(height: size.height * 0.025),
         Text(
           appVersion,
           style: GlobalTextStyle.bodyText.copyWith(fontSize: 12),
         ),
-        SizedBox(height: 4.h),
+        SizedBox(height: size.height * 0.005),
         Text(
           copyrightText,
           textAlign: TextAlign.center,
-          style:GlobalTextStyle.bodyText.copyWith(fontSize: 12),
+          style: GlobalTextStyle.bodyText.copyWith(fontSize: 12),
         ),
-        SizedBox(height: 24.h),
+        SizedBox(height: size.height * 0.03),
         SizedBox(
           width: double.infinity,
-          height: 48.h,
+          height: buttonHeight,
           child: ElevatedButton(
             onPressed: onLogoutPressed,
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF6B34AE),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(24.r),
+                borderRadius: BorderRadius.circular(buttonHeight / 2),
               ),
             ),
             child: Row(
