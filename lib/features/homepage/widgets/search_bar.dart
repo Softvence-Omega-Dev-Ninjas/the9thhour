@@ -51,16 +51,19 @@ class SearchBarWidget extends StatelessWidget {
           ),
         ),
         SizedBox(width: 12.w),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            shape: BoxShape.circle,
-          ),
-          padding: EdgeInsets.all(12.w),
-          child: Image(
-            width: 24.w,
-            height: 24.h,
-            image: AssetImage(IconPath.searchIcon),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
+            padding: EdgeInsets.all(12.w),
+            child: Image(
+              width: 24.w,
+              height: 24.h,
+              image: AssetImage(IconPath.searchIcon),
+            ),
           ),
         ),
       ],
