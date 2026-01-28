@@ -14,6 +14,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ProfileController controller = Get.put(ProfileController());
+    final size = MediaQuery.of(context).size;
 
     return WillPopScope(
       onWillPop: () async {
@@ -63,43 +64,43 @@ class ProfileScreen extends StatelessWidget {
               centerTitle: true,
             ),
             body: SafeArea(
-              child: SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16.w,
-                    vertical: 16.h,
-                  ),
-                  child: Obx(
-                    () => Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ProfileHeaderSection(
-                          profileImage:
-                              controller.userProfile.value.profileImage,
-                          name: controller.userProfile.value.name,
-                          title: controller.userProfile.value.title,
+              child: Obx(
+                () => CustomScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  slivers: [
+                    SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 12.w),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ProfileHeaderSection(
+                              profileImage:
+                                  controller.userProfile.value.profileImage,
+                              name: controller.userProfile.value.name,
+                              title: controller.userProfile.value.title,
+                            ),
+                            SizedBox(height: size.height * 0.03),
+                            BeautyProfileCard(
+                              skinTone: controller.userProfile.value.skinTone,
+                              skinType: controller.userProfile.value.skinType,
+                              hairType: controller.userProfile.value.hairType,
+                              goal: controller.userProfile.value.goal,
+                              budget: controller.userProfile.value.budget,
+                              onEditPressed: controller.editPreference,
+                            ),
+
+                            SizedBox(height: 110),
+                            ProfileFooterSection(
+                              onLogoutPressed: controller.logout,
+                            ),
+                            SizedBox(height: 100),
+                          ],
                         ),
-
-                        SizedBox(height: 24.h),
-
-                        BeautyProfileCard(
-                          skinTone: controller.userProfile.value.skinTone,
-                          skinType: controller.userProfile.value.skinType,
-                          hairType: controller.userProfile.value.hairType,
-                          goal: controller.userProfile.value.goal,
-                          budget: controller.userProfile.value.budget,
-                          onEditPressed: controller.editPreference,
-                        ),
-
-                        ProfileFooterSection(
-                          onLogoutPressed: controller.logout,
-                        ),
-
-                        SizedBox(height: 20.h),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ),

@@ -35,26 +35,30 @@ class ProfileHeaderSection extends StatelessWidget {
                     ),
             ),
             SizedBox(width: 20.w),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  name,
-                  style: GlobalTextStyle.heading2.copyWith(
-                    fontSize: 26.sp,
-                    fontWeight: FontWeight.w600,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    name,
+                    style: GlobalTextStyle.heading2.copyWith(
+                      fontSize: 26.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-                SizedBox(height: 8.h),
-                Text(
-                  title,
-                  style: GlobalTextStyle.bodyText.copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
+                  SizedBox(height: 8.h),
+                  Text(
+                    title,
+                    style: GlobalTextStyle.bodyText.copyWith(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
