@@ -16,10 +16,10 @@ class BrandChip extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
       decoration: BoxDecoration(
-        color: isSelected ? Color(0xFF5E3E7E) : Colors.white,
+        color: isSelected ? Color(0xFF6B34AE) : Colors.white,
         borderRadius: BorderRadius.circular(20.r),
         border: Border.all(
-          color: isSelected ? Color(0xFF5E3E7E) : Colors.transparent,
+          color: isSelected ? Color(0xFF6B34AE) : Colors.transparent,
         ),
       ),
       child: isText

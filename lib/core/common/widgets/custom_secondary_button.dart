@@ -8,11 +8,15 @@ import 'package:the9thhour/core/common/style/global_text_style.dart';
 class CustomSecondaryButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
+  final double? fontSize;
+  final FontWeight? fontWeight;
 
   const CustomSecondaryButton({
     super.key,
     required this.text,
     required this.onPressed,
+    this.fontSize,
+    this.fontWeight,
   });
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,7 @@ class CustomSecondaryButton extends StatelessWidget {
       width: 250.w,
       height: 50.h,
       child: ElevatedButton(
-        onPressed: () => _showLoginBottomSheet(context),
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFF6B34AE),
           fixedSize: Size(250.w, 50.h),
@@ -33,8 +37,8 @@ class CustomSecondaryButton extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontFamily: GoogleFonts.playfairDisplay().fontFamily,
-            fontSize: 12.0,
-            fontWeight: FontWeight.w400,
+            fontSize: fontSize ?? 30.0,
+            fontWeight: fontWeight ?? FontWeight.w400,
           ),
         ),
       ),
@@ -73,7 +77,7 @@ class CustomSecondaryButton extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 24.h),
-                Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
