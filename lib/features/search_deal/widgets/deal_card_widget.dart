@@ -6,7 +6,6 @@ import 'package:the9thhour/core/common/style/global_text_style.dart';
 import 'package:the9thhour/features/favorite_deal/controller/favorite_deal_controller.dart';
 import 'package:the9thhour/features/search_deal/controller/search_deal_controller.dart';
 import 'package:the9thhour/features/search_deal/model/deal_model.dart';
-import 'package:the9thhour/features/search_deal/widgets/login_bottom_sheet.dart';
 import 'package:the9thhour/features/search_deal/widgets/share_bottom_sheet.dart';
 
 class DealCardWidget extends StatelessWidget {
@@ -205,17 +204,21 @@ class DealCardWidget extends StatelessWidget {
     );
   }
 
-  void _showShareBottomSheet(BuildContext context) {
+  void _showBottomSheet(BuildContext context, Widget child) {
     Get.bottomSheet(
-      ShareBottomSheet(deal: deal),
+      child,
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
     );
   }
 
+  void _showShareBottomSheet(BuildContext context) {
+    _showBottomSheet(context, ShareBottomSheet(deal: deal));
+  }
+
   void _showLoginBottomSheet(BuildContext context) {
-    Get.bottomSheet(
-<<<<<<< Updated upstream
+    _showBottomSheet(
+      context,
       DraggableScrollableSheet(
         initialChildSize: 0.3,
         minChildSize: 0.2,
@@ -260,7 +263,7 @@ class DealCardWidget extends StatelessWidget {
                         'Google',
                         style: GlobalTextStyle.heading1.copyWith(
                           fontSize: 22,
-                          fontWeight: FontWeight.w600, // Google's blue color
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ],
@@ -279,7 +282,6 @@ class DealCardWidget extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton.icon(
                       onPressed: () {
-                        // Implement Google Sign In Logic
                         Get.back();
                       },
                       icon: Image.asset(
@@ -289,7 +291,9 @@ class DealCardWidget extends StatelessWidget {
                       ),
                       label: Text(
                         'Sign in with Google',
-                        style: GlobalTextStyle.bodyText.copyWith(color: Colors.white),
+                        style: GlobalTextStyle.bodyText.copyWith(
+                          color: Colors.white,
+                        ),
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF6B34AE),
@@ -307,11 +311,6 @@ class DealCardWidget extends StatelessWidget {
           );
         },
       ),
-=======
-      const LoginBottomSheet(),
->>>>>>> Stashed changes
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
     );
   }
 }
