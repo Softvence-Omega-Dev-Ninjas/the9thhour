@@ -72,11 +72,14 @@ class DealCardWidget extends StatelessWidget {
                             );
                           }),
                           const SizedBox(width: 4),
-                          Text(
-                            '${deal.rating} (${deal.reviews} Reviews)',
-                            style: GlobalTextStyle.bodyText.copyWith(
-                              fontSize: 12,
-                              fontWeight: FontWeight.normal,
+                          Flexible(
+                            child: Text(
+                              '${deal.rating} (${deal.reviews} Reviews)',
+                              overflow: TextOverflow.ellipsis,
+                              style: GlobalTextStyle.bodyText.copyWith(
+                                fontSize: 12,
+                                fontWeight: FontWeight.normal,
+                              ),
                             ),
                           ),
                         ],
@@ -103,27 +106,33 @@ class DealCardWidget extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              Text(
-                                "\$${deal.price}",
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w800,
-                                  color: const Color(0xFFA30293),
-                                ),
+                          Flexible(
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              alignment: Alignment.centerLeft,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "\$${deal.price}",
+                                    style: TextStyle(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w800,
+                                      color: const Color(0xFFA30293),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Text(
+                                    '\$${deal.oldPrice}',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.grey,
+                                      decoration: TextDecoration.lineThrough,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              const SizedBox(width: 10),
-                              Text(
-                                '\$${deal.oldPrice}',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.grey,
-                                  decoration: TextDecoration.lineThrough,
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ],
                       ),
@@ -140,13 +149,15 @@ class DealCardWidget extends StatelessWidget {
                                 ),
                                 minimumSize: const Size(0, 30),
                               ),
-                              child: Text(
-                                'View Deal',
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: GlobalTextStyle.bodyText.copyWith(
-                                  color: Colors.white,
-                                  fontSize: 12,
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  'View Deal',
+                                  maxLines: 1,
+                                  style: GlobalTextStyle.bodyText.copyWith(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                  ),
                                 ),
                               ),
                             ),

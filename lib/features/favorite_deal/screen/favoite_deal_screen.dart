@@ -55,24 +55,30 @@ class FavoriteDealScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Favorite ',
-                        style: GlobalTextStyle.heading2.copyWith(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w600,
-                        ),
+                  Flexible(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      alignment: Alignment.centerLeft,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Favorite ',
+                            style: GlobalTextStyle.heading2.copyWith(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            'Deals',
+                            style: GlobalTextStyle.heading1.copyWith(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Deals',
-                        style: GlobalTextStyle.heading1.copyWith(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
 
                   Row(
@@ -226,15 +232,20 @@ class FavoriteDealScreen extends StatelessWidget {
                                                     );
                                                   }),
                                                   const SizedBox(width: 4),
-                                                  Text(
-                                                    '${product.rating} (${product.reviews} Reviews)',
-                                                    style: GlobalTextStyle
-                                                        .bodyText
-                                                        .copyWith(
-                                                          fontSize: 12,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
+                                                  Flexible(
+                                                    child: Text(
+                                                      '${product.rating} (${product.reviews} Reviews)',
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: GlobalTextStyle
+                                                          .bodyText
+                                                          .copyWith(
+                                                            fontSize: 12,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                          ),
+                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -264,15 +275,6 @@ class FavoriteDealScreen extends StatelessWidget {
                                                 children: [
                                                   Row(
                                                     children: [
-                                                      // Text(
-                                                      //   '\$${product.price}',
-                                                      //   style: GlobalTextStyle.bodyText
-                                                      //       .copyWith(
-                                                      //         fontSize: 16,
-                                                      //         fontWeight:
-                                                      //             FontWeight.bold,
-                                                      //       ),
-                                                      // ),
                                                       Text(
                                                         "\$${product.price}",
                                                         style: TextStyle(
@@ -319,10 +321,13 @@ class FavoriteDealScreen extends StatelessWidget {
                                                           30,
                                                         ),
                                                       ),
-                                                      child: const Text(
-                                                        'View Deal',
-                                                        style: TextStyle(
-                                                          color: Colors.white,
+                                                      child: const FittedBox(
+                                                        fit: BoxFit.scaleDown,
+                                                        child: Text(
+                                                          'View Deal',
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                          ),
                                                         ),
                                                       ),
                                                     ),

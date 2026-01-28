@@ -65,18 +65,28 @@ class SearchDealScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          Image.asset(IconPath.fireIcon, width: 24, height: 24),
-                          SizedBox(width: 8),
-                          Text(
-                            'Search Results',
-                            style: GlobalTextStyle.heading2.copyWith(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
+                      Flexible(
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.centerLeft,
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                IconPath.fireIcon,
+                                width: 24,
+                                height: 24,
+                              ),
+                              SizedBox(width: 8),
+                              Text(
+                                'Search Results',
+                                style: GlobalTextStyle.heading2.copyWith(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                       Row(
                         children: [
