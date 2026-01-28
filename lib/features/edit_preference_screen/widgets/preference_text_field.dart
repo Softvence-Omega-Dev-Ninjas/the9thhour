@@ -16,11 +16,20 @@ class PreferenceTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: GlobalTextStyle.heading2.copyWith(fontSize: 14,)),
+        Text(
+          label,
+          style: GlobalTextStyle.heading2.copyWith(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
         const SizedBox(height: 6),
         TextField(
           controller: TextEditingController(text: initialValue),
-          style: GlobalTextStyle.bodyText.copyWith(fontSize: 14,fontWeight: FontWeight.w100),
+          style: GlobalTextStyle.bodyText.copyWith(
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+          ),
           decoration: InputDecoration(
             filled: true,
             fillColor: Color.fromARGB(255, 245, 202, 226),
@@ -34,7 +43,7 @@ class PreferenceTextField extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 16),
       ],
     );
   }

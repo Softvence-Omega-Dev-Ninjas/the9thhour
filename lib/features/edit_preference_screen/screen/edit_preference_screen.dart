@@ -56,10 +56,10 @@ class EditPreferenceScreen extends GetView<EditPreferenceController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 12),
+                const SizedBox(height: 20),
                 const ProfileAvatarWidget(),
 
-                const SizedBox(height: 24),
+                const SizedBox(height: 20),
 
                 PreferenceTextField(
                   label: 'Your Name:',
@@ -79,9 +79,12 @@ class EditPreferenceScreen extends GetView<EditPreferenceController> {
                 const SizedBox(height: 16),
                 Text(
                   'Select Skin Tone:',
-                  style: GlobalTextStyle.heading2.copyWith(fontSize: 14),
+                  style: GlobalTextStyle.heading2.copyWith(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 16),
 
                 SelectableChipGroup(
                   options: controller.skinToneOptions,
@@ -92,7 +95,10 @@ class EditPreferenceScreen extends GetView<EditPreferenceController> {
                 const SizedBox(height: 16),
                 Text(
                   'Hair Type:',
-                  style: GlobalTextStyle.heading2.copyWith(fontSize: 14),
+                  style: GlobalTextStyle.heading2.copyWith(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
                 const SizedBox(height: 8),
 
@@ -102,7 +108,7 @@ class EditPreferenceScreen extends GetView<EditPreferenceController> {
                   onSelected: controller.selectHairType,
                 ),
 
-                const SizedBox(height: 32),
+                const SizedBox(height: 40),
               ],
             ),
           ),
