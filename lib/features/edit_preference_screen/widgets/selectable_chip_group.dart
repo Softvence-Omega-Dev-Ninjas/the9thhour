@@ -37,7 +37,7 @@ class SelectableChipGroup extends StatelessWidget {
             backgroundColor: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(100),
-              side: const BorderSide(color:Color(0xFFD8BBC7)),
+              side: const BorderSide(color: Color(0xFFD8BBC7)),
             ),
             onSelected: (_) => onSelected(item),
           );
