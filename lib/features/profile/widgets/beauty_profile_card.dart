@@ -27,7 +27,7 @@ class BeautyProfileCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: const Color(0xFFF7D5E8),
+        color: const Color.fromARGB(255, 249, 207, 231),
         borderRadius: BorderRadius.circular(22.r),
         border: Border.all(
           color: const Color.fromARGB(255, 236, 197, 223),
@@ -71,7 +71,7 @@ class BeautyProfileCard extends StatelessWidget {
                   onTap: onEditPressed,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: const Color(0xFFB83B9F),
+                      color: const Color(0xFFC84791),
                       borderRadius: BorderRadius.circular(20.r),
                     ),
                     padding: EdgeInsets.symmetric(
